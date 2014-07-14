@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>qding-community</groupId>
+        <artifactId>wx-community</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <artifactId>community-app</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.2-SNAPSHOT</version>
+    <modules>
+        <module>app-news-core</module>
+        <module>app-news-service</module>
+        <module>app-goods-core</module>
+        <module>app-goods-service</module>
+        <module>app-goods-etl</module>
+    <module>app-decorate-core</module>
+    <module>app-decorate-service</module>
+  </modules>
+</project>
