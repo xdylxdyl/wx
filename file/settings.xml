@@ -1,0 +1,63 @@
+<settings>
+  <servers>
+    <server>
+      <id>nexus</id>
+      <username>admin</username>
+      <password>admin123</password>
+      <filePermissions>664</filePermissions>
+      <directoryPermissions>775</directoryPermissions>
+      <configuration></configuration>
+    </server>
+    <server>
+      <id>central-proxy</id>
+      <username>admin</username>
+      <password>admin123</password>
+      <filePermissions>664</filePermissions>
+      <directoryPermissions>775</directoryPermissions>
+      <configuration></configuration>
+  </server>  
+  </servers>
+  <mirrors>
+  	<mirror>
+      <id>central-proxy</id>
+      <mirrorOf>central</mirrorOf>
+      <url>http://115.28.20.72:8081/nexus/content/repositories/central</url>
+    </mirror>        
+</mirrors>
+<profiles>
+    <profile>
+    	<id>my-repository</id>
+      <activation>
+          <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>gemantic's nexus</name>    
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <url>http://115.28.20.72:8081/nexus/content/groups/public</url>
+            <layout>default</layout>
+        </repository> 
+      </repositories>  
+    </profile>
+    <profile>
+    	<id>my-build</id>
+      <activation>
+          <activeByDefault>true</activeByDefault>
+      </activation>
+    	<properties> 
+  			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+			</properties> 
+		</profile>
+</profiles>
+
+</settings>

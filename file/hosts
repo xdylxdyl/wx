@@ -1,0 +1,58 @@
+127.0.0.1 localhost
+127.0.0.1 www.2345.com
+127.0.0.1 2345.com
+127.0.0.1 www.99zm.com
+127.0.0.1 99zm.com
+127.0.0.1 www.5w.com
+127.0.0.1 5w.com
+127.0.0.1 www.tao123.com
+127.0.0.1 tao123.com
+127.0.0.1 www.go2000.com
+127.0.0.1 go2000.com
+127.0.0.1 www.dianxin.cn
+127.0.0.1 dianxin.cn
+127.0.0.1 www.155.com
+127.0.0.1 155.com
+127.0.0.1 123.sogou.com
+127.0.0.1 www.114so.cn
+127.0.0.1 114so.cn
+127.0.0.1 www.5566.net
+127.0.0.1 5566.net
+127.0.0.1 www.9991.com
+127.0.0.1 9991.com
+127.0.0.1 hao.qq.com
+127.0.0.1 www.46.com
+127.0.0.1 46.com
+127.0.0.1 www.1616.net
+127.0.0.1 1616.net
+127.0.0.1 hao.rising.cn
+42.96.145.106 gemantic.weibo.db
+127.0.0.1 semantic.weibo.service
+42.121.113.70 xdylxdyl.mysql.rds.aliyuncs.com
+42.96.145.106 db.gemantic.scallop.resource
+42.121.113.70 scallop.resource.center
+#42.121.113.70 mvn.repostiory.com
+115.28.20.72 mvn.repostiory.com
+42.96.145.106 db.framework.publics 
+42.96.145.106 cache.labs.killer
+42.96.145.106 cache.framework.publics
+#127.0.0.1 framework.publics.service
+42.96.145.106 framework.publics.service 
+
+42.96.145.106 app.news.service
+42.96.145.106 db.app.news
+42.96.145.106 cache.app.news
+
+42.96.145.106 framework.user.service
+#127.0.0.1 framework.user.service
+42.96.145.106 db.framework.user
+42.96.145.106 cache.framework.user
+
+
+42.96.145.106 db.common.sms
+42.96.145.106 cache.common.sms
+42.96.145.106 common.sms.service
+
+
+
+
