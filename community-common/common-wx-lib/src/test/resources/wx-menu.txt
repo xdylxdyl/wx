@@ -1,0 +1,34 @@
+{
+    "button": [
+        {
+            "type": "click", 
+            "name": "持仓", 
+            "key": "EVENT_PORTFOLIO"
+        }, 
+        {
+            "type": "click", 
+            "name": "最新资讯", 
+            "key": "EVENT_NEWS"
+        }, 
+        {
+            "name": "菜单", 
+            "sub_button": [
+                {
+                    "type": "click", 
+                    "name": "绑定", 
+                    "key": "EVENT_BIND"
+                }, 
+                {
+                    "type": "click", 
+                    "name": "应用下载", 
+                    "key": "EVENT_DOWNLOAD_APP"
+                },
+		{
+                    "type":"view",
+                    "name":"搜索",
+                    "url":"http://www.ptteng.com/"
+                }
+            ]
+        }
+    ]
+}
