@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://CommonQueueComponent" xmlns:sample="http://CommonQueueComponent" name="CommonQueueComponent">
+
+
+  <component name="CommonQueueComponent">
+    <implementation.spring location="META-INF/common-queue-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="msgQueueService" promote="CommonQueueComponent/msgQueueService">
+    <interface.java interface="com.qding.common.queue.service.MsgQueueService"/> 
+    <scallop:binding.rmi host="localhost" port="9081" serviceName="MsgQueueRMIService"/>     
+  </service>
+	  <service name="retryQueueService" promote="CommonQueueComponent/retryQueueService">
+    <interface.java interface="com.qding.common.queue.service.RetryQueueService"/> 
+    <scallop:binding.rmi host="localhost" port="9081" serviceName="RetryQueueRMIService"/>     
+  </service>
+	
+	
+	 
+  
+	
+
+
+</composite>
+
