@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://AppGoodsComponent" xmlns:sample="http://AppGoodsComponent" name="AppGoodsComponent">
+
+  <component name="AppGoodsComponent">
+    <implementation.spring location="META-INF/app-goods-etl/applicationContext-server.xml" />
+  </component>
+ 
+<!--  
+
+
+  
+  <service name="goodsService" promote="AppGoodsComponent/goodsService">
+    <interface.java interface="com.qding.app.goods.service.GoodsService"/> 
+    <scallop:binding.rmi host="app.goods.service" port="9071" serviceName="GoodsRMIService"/>     
+  </service>
+  
+  
+   <component name = "GoodsServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.GoodsSCAClient"/>
+    	   
+    	<reference name = "goodsService">
+    		<scallop:binding.rmi registryName = "goods-app-goods-service-rmi" serviceName="GoodsRMIService"/>
+    	</reference>
+    </component >
+    
+    
+    
+    	<reference name="goodsService" promote="AppGoodsComponent/goodsService">
+		<interface.java interface="com.qding.app.goods.service.GoodsService" />
+		<scallop:binding.rmi registryName="goods-app-goods-service-rmi" serviceName="GoodsRMIService" />
+	</reference>
+  
+  
+  
+
+	
+ -->
+  
+	
+	
+   <reference name = "gorderGoodsRelationService" promote="AppGoodsComponent/gorderGoodsRelationService">
+		<scallop:binding.rmi registryName = "goods-app-goods-service-rmi" serviceName="GorderGoodsRelationRMIService"/>
+	</reference>
+   <reference name = "gorderService" promote="AppGoodsComponent/gorderService">
+		<scallop:binding.rmi registryName = "goods-app-goods-service-rmi" serviceName="GorderRMIService"/>
+	</reference>
+   <reference name = "goodsService" promote="AppGoodsComponent/goodsService">
+		<scallop:binding.rmi registryName = "goods-app-goods-service-rmi" serviceName="GoodsRMIService"/>
+	</reference>
+	
+	<reference name = "goodsPublicsRelationService" promote="AppGoodsComponent/goodsPublicsRelationService">
+		<scallop:binding.rmi registryName = "goods-app-goods-service-rmi" serviceName="GoodsPublicsRelationRMIService"/>
+	</reference>
+	<reference name = "tagsGoodsRelationService" promote="AppGoodsComponent/tagsGoodsRelationService">
+		<scallop:binding.rmi registryName = "goods-app-goods-service-rmi" serviceName="TagsGoodsRelationRMIService"/>
+	</reference>
+	<reference name = "payOrderService" promote="AppGoodsComponent/payOrderService">
+		<scallop:binding.rmi registryName = "payOrder-common-pay-service-rmi" serviceName="PayOrderRMIService"/>
+	</reference>
+	
+</composite>
+

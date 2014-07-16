@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.app.goods" />
+<!-- <import
+		resource="classpath:META-INF/app-goods-etl/applicat/ionContext-quartz.xml" /> -->
+<!-- 	<sca:service name="goodsService"
+		type="com.qding.app.goods.service.GoodsService" target="goodsService" /> -->
+
+	<sca:reference name="gorderGoodsRelationService"
+		type="com.qding.app.goods.service.GorderGoodsRelationService" />
+	<sca:reference name="goodsService"
+		type="com.qding.app.goods.service.GoodsService" />
+	<sca:reference name="gorderService"
+		type="com.qding.app.goods.service.GorderService" />
+	<sca:reference name="payOrderService"
+		type="com.qding.common.pay.service.PayOrderService" />
+ 
+	<sca:reference name="tagsGoodsRelationService"
+		type="com.qding.app.goods.service.TagsGoodsRelationService" />
+ 
+	<sca:reference name="goodsPublicsRelationService"
+		type="com.qding.app.goods.service.GoodsPublicsRelationService" />
+ 
+	<bean id="goodsEtl1" class="com.qding.app.goods.etl.GoodsEtl">
+		<property name="goodsService" ref="goodsService" />
+		<property name="goodsPublicsRelationService" ref="goodsPublicsRelationService" />
+		<property name="tagsGoodsRelationService" ref="tagsGoodsRelationService" />
+	</bean>
+	<bean id="goodsEtl2" class="com.qding.app.goods.etl.GoodsEtl">
+		<property name="goodsService" ref="goodsService" />
+		<property name="goodsPublicsRelationService" ref="goodsPublicsRelationService" />
+		<property name="tagsGoodsRelationService" ref="tagsGoodsRelationService" />
+	</bean>
+	
+	<bean id="gorderEtl" class="com.qding.app.goods.etl.GorderEtl">
+		<property name="gorderService" ref="gorderService" />
+		<property name="payOrderService" ref="payOrderService" />
+		<property name="gorderGoodsRelationService" ref="gorderGoodsRelationService" />
+		<property name="goodsService" ref="goodsService" />
+	</bean>
+
+	 
+
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.gemantic..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config> 
+
+
+
+
+
+	<!-- 启动调度 -->
+	<bean id="start"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- <ref bean="weiboTrigger" /> -->
+				<ref bean="goodstrigger1" /> 
+				<ref bean="goodstrigger2" /> 
+				<ref bean="gordertrigger" /> 
+			</list>
+		</property>
+	</bean>
+
+
+<!-- 	<bean id="weiboTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="weiboJobDetail" />
+		<property name="startDelay" value="10000" />
+		<property name="repeatCount" value="0" />
+
+	</bean> -->
+
+<!-- 	<bean id="weiboJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="weiboEtl" />
+		<property name="targetMethod" value="process" />
+		<property name="concurrent" value="false" />
+	</bean> -->
+
+
+	<bean id="goodstrigger1" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="goodsJobDetail1" />
+		<property name="startDelay" value="10000" />
+		<property name="repeatCount" value="0" />
+
+	</bean>
+	<bean id="goodstrigger2" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="goodsJobDetail2" />
+		<property name="startDelay" value="10000" />
+		<property name="repeatCount" value="0" />
+
+	</bean>
+	<bean id="gordertrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="gorderJobDetail" />
+		<property name="startDelay" value="10000" />
+		<property name="repeatCount" value="0" />
+
+	</bean>
+	<bean id="goodsJobDetail1"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="goodsEtl1" />
+		<property name="targetMethod" value="process1" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="goodsJobDetail2"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="goodsEtl2" />
+		<property name="targetMethod" value="process2" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="gorderJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="gorderEtl" />
+		<property name="targetMethod" value="process1" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+
+
+
+</beans>
+

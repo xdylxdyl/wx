@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<cache>
+		<datasource
+			name="default"
+			timeout="300"
+			port="11211"
+			server="cache.app.goods"
+			maxActive="18" 
+			maxIdle="18" 
+			maxWait="-1" 
+		/>
+	</cache>
+	<regions>
+		
+						<region name="com.qding.app.goods.model.Provider" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.ProviderPublicsRelation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.Category" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.Goods" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.Tags" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.TagsPublicsRelation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.TagsGoodsRelation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.Address" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.AddressUserRelation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.Gorder" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.GorderGoodsRelation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.Cart" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.goods.model.CartGoodsRelation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+										
+				                    
+                                        
+			<region name="getProviderIdByName" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getProviderPublicsRelationIdsByProviderID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getProviderPublicsRelationIdsByPublicsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getCategoryIdByName" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getGoodsIdByName" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getGoodsIdsByCategoryID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+						
+		
+							
+				                    
+                                        
+			<region name="getTagsPublicsRelationIdsByTagsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getTagsPublicsRelationIdsByPublicsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getTagsGoodsRelationIdsByGoodsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getTagsGoodsRelationIdsByTagsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getAddressIdByName" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getAddressUserRelationIdsByUserID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getAddressUserRelationIdByAddressID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getGorderIdsByUserID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getGorderIdByCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getGorderIdsByPublicsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getGorderGoodsRelationIdsByGoodsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getGorderGoodsRelationIdsByGorderID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getCartIdByUserID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getCartGoodsRelationIdsByGoodsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCartGoodsRelationIdsByCartID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+					
+			
+			
+			
+		
+		
+	
+
+
+	</regions>
+</root>
+
