@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.app.goods.model.ProviderPublicsRelation"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getProviderPublicsRelationIdsByProviderID"
+				sqlitem="select id from provider_publics_relation where provider_id = ?"
+				keyProperty="providerID" valueProperty="id" keyColumn="provider_id" />
+					<list name="getProviderPublicsRelationIdsByPublicsIDAndStatus"
+				sqlitem="select id from provider_publics_relation where publics_id = ?  and status = ?"
+				keyProperty="publicsID,status" valueProperty="id" keyColumn="publics_id,status" />
+					<list name="getProviderIDsByPublicsIDAndStatus"
+				sqlitem="select provider_id from provider_publics_relation where publics_id = ?  and status = ?"
+				keyProperty="publicsID,status" valueProperty="providerID" keyColumn="publics_id,status" />
+					<list name="getProviderIDsByPublicsID"
+				sqlitem="select provider_id from provider_publics_relation where publics_id = ?"
+				keyProperty="publicsID" valueProperty="providerID" keyColumn="publics_id" />
+						
+			
+						
+			
+					<list name="getProviderPublicsRelationIdsAll" sqlitem="select id from provider_publics_relation where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="app_goods" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.app.goods" />
+
+
+	<sca:service name="providerService"
+		type="com.qding.app.goods.service.ProviderService" target="providerService" />
+
+
+	<sca:service name="providerPublicsRelationService"
+		type="com.qding.app.goods.service.ProviderPublicsRelationService"
+		target="providerPublicsRelationService" />
+
+
+	<sca:service name="categoryService"
+		type="com.qding.app.goods.service.CategoryService" target="categoryService" />
+
+
+	<sca:service name="goodsPublicsRelationService"
+		type="com.qding.app.goods.service.GoodsPublicsRelationService" target="goodsPublicsRelationService" />
+
+
+	<sca:service name="goodsService"
+		type="com.qding.app.goods.service.GoodsService" target="goodsService" />
+
+
+	<sca:service name="tagsService" type="com.qding.app.goods.service.TagsService"
+		target="tagsService" />
+
+
+	<sca:service name="tagsPublicsRelationService"
+		type="com.qding.app.goods.service.TagsPublicsRelationService" target="tagsPublicsRelationService" />
+
+
+	<sca:service name="tagsGoodsRelationService"
+		type="com.qding.app.goods.service.TagsGoodsRelationService" target="tagsGoodsRelationService" />
+
+
+	<sca:service name="addressService"
+		type="com.qding.app.goods.service.AddressService" target="addressService" />
+
+
+	<sca:service name="addressUserRelationService"
+		type="com.qding.app.goods.service.AddressUserRelationService" target="addressUserRelationService" />
+
+
+	<sca:service name="gorderService"
+		type="com.qding.app.goods.service.GorderService" target="gorderService" />
+
+
+	<sca:service name="gorderGoodsRelationService"
+		type="com.qding.app.goods.service.GorderGoodsRelationService" target="gorderGoodsRelationService" />
+
+
+	<sca:service name="cartService" type="com.qding.app.goods.service.CartService"
+		target="cartService" />
+
+
+	<sca:service name="cartGoodsRelationService"
+		type="com.qding.app.goods.service.CartGoodsRelationService" target="cartGoodsRelationService" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<bean id="providerService" class="com.qding.app.goods.service.impl.ProviderServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="providerPublicsRelationService"
+		class="com.qding.app.goods.service.impl.ProviderPublicsRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="categoryService" class="com.qding.app.goods.service.impl.CategoryServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="goodsPublicsRelationService"
+		class="com.qding.app.goods.service.impl.GoodsPublicsRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="goodsService" class="com.qding.app.goods.service.impl.GoodsServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="tagsService" class="com.qding.app.goods.service.impl.TagsServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="tagsPublicsRelationService"
+		class="com.qding.app.goods.service.impl.TagsPublicsRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="tagsGoodsRelationService"
+		class="com.qding.app.goods.service.impl.TagsGoodsRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="addressService" class="com.qding.app.goods.service.impl.AddressServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="addressUserRelationService"
+		class="com.qding.app.goods.service.impl.AddressUserRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="gorderService" class="com.qding.app.goods.service.impl.GorderServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="gorderGoodsRelationService"
+		class="com.qding.app.goods.service.impl.GorderGoodsRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="cartService" class="com.qding.app.goods.service.impl.CartServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="cartGoodsRelationService"
+		class="com.qding.app.goods.service.impl.CartGoodsRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+	
+
+
+	<bean id="dao" class="com.gemantic.dal.dao.impl.CompositeDaoImpl" />
+
+	<bean id="baseDaoService"
+		class="com.qding.common.dao.base.service.impl.BaseDaoServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+
+
+
+
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.gemantic..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
+

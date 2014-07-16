@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<list>
+		
+				
+		
+		<config>
+			<path>provider_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>providerPublicsRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>category_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>goodsPublicsRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>goods_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>tags_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>tagsPublicsRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>tagsGoodsRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>address_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>addressUserRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>gorder_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>gorderGoodsRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>cart_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>cartGoodsRelation_dao.xml</path>
+		</config>
+						
+		
+		
+	</list>
+
+	<default>
+		<dbStrategy name=""
+			clasz="com.gemantic.dal.route.strategy.DefaultStrategy">
+			<pattern value="[0-9]$" group="g1" />
+		</dbStrategy>
+		<listenerClass className="" />
+		<idCenterDS ds="idCenterDS" />
+	</default>
+</dal>                

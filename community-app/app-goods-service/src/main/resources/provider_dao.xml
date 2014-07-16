@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.app.goods.model.Provider"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+						
+			
+					<map name="getProviderIdByName"
+				sqlitem="select id from provider where  name = ?"
+				keyProperty="name" valueProperty="id" keyColumn="name" />
+						
+			
+					<list name="getProviderIdsAll" sqlitem="select id from provider where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="app_goods" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

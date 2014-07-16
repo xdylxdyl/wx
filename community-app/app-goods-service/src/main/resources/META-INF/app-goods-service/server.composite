@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://AppGoodsComponent" xmlns:sample="http://AppGoodsComponent" name="AppGoodsComponent">
+
+
+  <component name="AppGoodsComponent">
+    <implementation.spring location="META-INF/app-goods-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="providerService" promote="AppGoodsComponent/providerService">
+    <interface.java interface="com.qding.app.goods.service.ProviderService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="ProviderRMIService"/>     
+  </service>
+	  <service name="providerPublicsRelationService" promote="AppGoodsComponent/providerPublicsRelationService">
+    <interface.java interface="com.qding.app.goods.service.ProviderPublicsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="ProviderPublicsRelationRMIService"/>     
+  </service>
+	  <service name="categoryService" promote="AppGoodsComponent/categoryService">
+    <interface.java interface="com.qding.app.goods.service.CategoryService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="CategoryRMIService"/>     
+  </service>
+	  <service name="goodsPublicsRelationService" promote="AppGoodsComponent/goodsPublicsRelationService">
+    <interface.java interface="com.qding.app.goods.service.GoodsPublicsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="GoodsPublicsRelationRMIService"/>     
+  </service>
+	  <service name="goodsService" promote="AppGoodsComponent/goodsService">
+    <interface.java interface="com.qding.app.goods.service.GoodsService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="GoodsRMIService"/>     
+  </service>
+	  <service name="tagsService" promote="AppGoodsComponent/tagsService">
+    <interface.java interface="com.qding.app.goods.service.TagsService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="TagsRMIService"/>     
+  </service>
+	  <service name="tagsPublicsRelationService" promote="AppGoodsComponent/tagsPublicsRelationService">
+    <interface.java interface="com.qding.app.goods.service.TagsPublicsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="TagsPublicsRelationRMIService"/>     
+  </service>
+	  <service name="tagsGoodsRelationService" promote="AppGoodsComponent/tagsGoodsRelationService">
+    <interface.java interface="com.qding.app.goods.service.TagsGoodsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="TagsGoodsRelationRMIService"/>     
+  </service>
+	  <service name="addressService" promote="AppGoodsComponent/addressService">
+    <interface.java interface="com.qding.app.goods.service.AddressService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="AddressRMIService"/>     
+  </service>
+	  <service name="addressUserRelationService" promote="AppGoodsComponent/addressUserRelationService">
+    <interface.java interface="com.qding.app.goods.service.AddressUserRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="AddressUserRelationRMIService"/>     
+  </service>
+	  <service name="gorderService" promote="AppGoodsComponent/gorderService">
+    <interface.java interface="com.qding.app.goods.service.GorderService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="GorderRMIService"/>     
+  </service>
+	  <service name="gorderGoodsRelationService" promote="AppGoodsComponent/gorderGoodsRelationService">
+    <interface.java interface="com.qding.app.goods.service.GorderGoodsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="GorderGoodsRelationRMIService"/>     
+  </service>
+	  <service name="cartService" promote="AppGoodsComponent/cartService">
+    <interface.java interface="com.qding.app.goods.service.CartService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="CartRMIService"/>     
+  </service>
+	  <service name="cartGoodsRelationService" promote="AppGoodsComponent/cartGoodsRelationService">
+    <interface.java interface="com.qding.app.goods.service.CartGoodsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9041" serviceName="CartGoodsRelationRMIService"/>     
+  </service>
+	
+	
+	 
+  
+	
+
+
+</composite>
+

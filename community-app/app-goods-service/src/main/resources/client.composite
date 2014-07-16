@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0" xmlns:scallop="http://scallop/xmlns/sca/1.0"
+           targetNamespace="http://sns.sohu.com/home/composite" xmlns:sample="http://sns.sohu.com/home/composite" name="HomeComposite">
+	
+
+
+
+
+    	
+	
+	 <!-- AppGoodsComponent -->
+	 
+	     <component name = "ProviderServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.ProviderSCAClient"/>
+    	   
+    	<reference name = "providerService">
+    		<scallop:binding.rmi registryName = "provider-app-goods-service-rmi" serviceName="ProviderRMIService"/>
+    	</reference>
+    </component >
+        <component name = "ProviderPublicsRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.ProviderPublicsRelationSCAClient"/>
+    	   
+    	<reference name = "providerPublicsRelationService">
+    		<scallop:binding.rmi registryName = "providerPublicsRelation-app-goods-service-rmi" serviceName="ProviderPublicsRelationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "CategoryServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.CategorySCAClient"/>
+    	   
+    	<reference name = "categoryService">
+    		<scallop:binding.rmi registryName = "category-app-goods-service-rmi" serviceName="CategoryRMIService"/>
+    	</reference>
+    </component >
+        <component name = "GoodsServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.GoodsSCAClient"/>
+    	   
+    	<reference name = "goodsService">
+    		<scallop:binding.rmi registryName = "goods-app-goods-service-rmi" serviceName="GoodsRMIService"/>
+    	</reference>
+    </component >
+        <component name = "TagsServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.TagsSCAClient"/>
+    	   
+    	<reference name = "tagsService">
+    		<scallop:binding.rmi registryName = "tags-app-goods-service-rmi" serviceName="TagsRMIService"/>
+    	</reference>
+    </component >
+        <component name = "TagsPublicsRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.TagsPublicsRelationSCAClient"/>
+    	   
+    	<reference name = "tagsPublicsRelationService">
+    		<scallop:binding.rmi registryName = "tagsPublicsRelation-app-goods-service-rmi" serviceName="TagsPublicsRelationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "TagsGoodsRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.TagsGoodsRelationSCAClient"/>
+    	   
+    	<reference name = "tagsGoodsRelationService">
+    		<scallop:binding.rmi registryName = "tagsGoodsRelation-app-goods-service-rmi" serviceName="TagsGoodsRelationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "AddressServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.AddressSCAClient"/>
+    	   
+    	<reference name = "addressService">
+    		<scallop:binding.rmi registryName = "address-app-goods-service-rmi" serviceName="AddressRMIService"/>
+    	</reference>
+    </component >
+        <component name = "AddressUserRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.AddressUserRelationSCAClient"/>
+    	   
+    	<reference name = "addressUserRelationService">
+    		<scallop:binding.rmi registryName = "addressUserRelation-app-goods-service-rmi" serviceName="AddressUserRelationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "GorderServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.GorderSCAClient"/>
+    	   
+    	<reference name = "gorderService">
+    		<scallop:binding.rmi registryName = "gorder-app-goods-service-rmi" serviceName="GorderRMIService"/>
+    	</reference>
+    </component >
+        <component name = "GorderGoodsRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.GorderGoodsRelationSCAClient"/>
+    	   
+    	<reference name = "gorderGoodsRelationService">
+    		<scallop:binding.rmi registryName = "gorderGoodsRelation-app-goods-service-rmi" serviceName="GorderGoodsRelationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "CartServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.CartSCAClient"/>
+    	   
+    	<reference name = "cartService">
+    		<scallop:binding.rmi registryName = "cart-app-goods-service-rmi" serviceName="CartRMIService"/>
+    	</reference>
+    </component >
+        <component name = "CartGoodsRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.app.goods.client.CartGoodsRelationSCAClient"/>
+    	   
+    	<reference name = "cartGoodsRelationService">
+    		<scallop:binding.rmi registryName = "cartGoodsRelation-app-goods-service-rmi" serviceName="CartGoodsRelationRMIService"/>
+    	</reference>
+    </component >
+    	
+	
+</composite>
+

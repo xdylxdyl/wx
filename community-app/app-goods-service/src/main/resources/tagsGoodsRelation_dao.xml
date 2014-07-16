@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.app.goods.model.TagsGoodsRelation"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getTagsIDsByGoodsIDAndPublicsID"
+				sqlitem="select tags_id from tags_goods_relation where goods_id = ? and publics_id = ?"
+				keyProperty="goodsID,publicsID" valueProperty="tagsID" keyColumn="goods_id,publics_id" />
+					<list name="getTagsGoodsRelationIdsByGoodsID"
+				sqlitem="select id from tags_goods_relation where goods_id = ?"
+				keyProperty="goodsID" valueProperty="id" keyColumn="goods_id" />
+					<list name="getTagsGoodsRelationIdsByTagsIDAndPublicsIDAndStatus"
+				sqlitem="select id from tags_goods_relation where tags_id = ?  and publics_id = ? and status = ?"
+				keyProperty="tagsID,publicsID,status" valueProperty="id" keyColumn="tags_id,publics_id,status" />
+						
+			
+						
+			
+					<list name="getTagsGoodsRelationIdsAll" sqlitem="select id from tags_goods_relation where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="app_goods" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

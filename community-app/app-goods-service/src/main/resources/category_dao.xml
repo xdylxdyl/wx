@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.app.goods.model.Category"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getCategoryIdsByStatus"
+				sqlitem="select id from category where  status = ?"
+				keyProperty="status" valueProperty="id" keyColumn="status" />
+						
+			
+					<map name="getCategoryIdByName"
+				sqlitem="select id from category where  name = ?"
+				keyProperty="name" valueProperty="id" keyColumn="name" />
+						
+			
+					<list name="getCategoryIdsAll" sqlitem="select id from category where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="app_goods" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>
