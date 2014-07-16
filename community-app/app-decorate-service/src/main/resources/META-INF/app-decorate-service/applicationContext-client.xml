@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+	
+	<context:annotation-config />
+    <context:component-scan base-package="com.gemantic"/>  
+	
+	
+	<bean id="scaClient"
+		class="com.gemantic.common.sca.service.SCAClientBean">
+		<property name="resource" value="client.composite" />
+	</bean>
+	
+	
+	<!-- ============================================================ -->
+	<!-- ==                    AppDecorateComponent                       == -->
+	<!-- ============================================================ -->
+	
+	 
+	
+	
+	<!-- DecorateService  -->
+
+	
+	<bean id="decorateService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- DecorateImagesRelationService  -->
+
+	
+	<bean id="decorateImagesRelationService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateImagesRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateImagesRelationService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- DecoratePaymentService  -->
+
+	
+	<bean id="decoratePaymentService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecoratePaymentServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecoratePaymentService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- DecorateVenderService  -->
+
+	
+	<bean id="decorateVenderService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateVenderServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateVenderService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- DecorateVenderUserService  -->
+
+	
+	<bean id="decorateVenderUserService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateVenderUserServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateVenderUserService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- ImagesService  -->
+
+	
+	<bean id="imagesService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="ImagesServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.ImagesService" />
+	</bean>
+
+	
+		
+	
+	
+	
+	<!-- performance -->
+	
+	 <aop:aspectj-autoproxy />
+        <bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume"/>
+        <aop:config>
+            <aop:aspect ref="aroundLoggingTime">
+                <aop:pointcut id="publicServiceMethod" expression="execution(* com.gemantic..service.*.*(..)) &amp;&amp; (!execution(* com.gemantic.common.sca.service.*.*(..)))" />
+                <aop:around method="around" pointcut-ref="publicServiceMethod"/>
+            </aop:aspect>
+        </aop:config>
+</beans>
+

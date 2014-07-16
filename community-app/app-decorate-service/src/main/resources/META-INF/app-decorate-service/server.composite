@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://AppDecorateComponent" xmlns:sample="http://AppDecorateComponent" name="AppDecorateComponent">
+
+
+  <component name="AppDecorateComponent">
+    <implementation.spring location="META-INF/app-decorate-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="decorateService" promote="AppDecorateComponent/decorateService">
+    <interface.java interface="com.qding.app.decorate.service.DecorateService"/> 
+    <scallop:binding.rmi host="localhost" port="9101" serviceName="DecorateRMIService"/>     
+  </service>
+	  <service name="decorateImagesRelationService" promote="AppDecorateComponent/decorateImagesRelationService">
+    <interface.java interface="com.qding.app.decorate.service.DecorateImagesRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9101" serviceName="DecorateImagesRelationRMIService"/>     
+  </service>
+	  <service name="decoratePaymentService" promote="AppDecorateComponent/decoratePaymentService">
+    <interface.java interface="com.qding.app.decorate.service.DecoratePaymentService"/> 
+    <scallop:binding.rmi host="localhost" port="9101" serviceName="DecoratePaymentRMIService"/>     
+  </service>
+	  <service name="decorateVenderService" promote="AppDecorateComponent/decorateVenderService">
+    <interface.java interface="com.qding.app.decorate.service.DecorateVenderService"/> 
+    <scallop:binding.rmi host="localhost" port="9101" serviceName="DecorateVenderRMIService"/>     
+  </service>
+	  <service name="decorateVenderUserService" promote="AppDecorateComponent/decorateVenderUserService">
+    <interface.java interface="com.qding.app.decorate.service.DecorateVenderUserService"/> 
+    <scallop:binding.rmi host="localhost" port="9101" serviceName="DecorateVenderUserRMIService"/>     
+  </service>
+	  <service name="imagesService" promote="AppDecorateComponent/imagesService">
+    <interface.java interface="com.qding.app.decorate.service.ImagesService"/> 
+    <scallop:binding.rmi host="localhost" port="9101" serviceName="ImagesRMIService"/>     
+  </service>
+	  <service name="decorateLogService" promote="AppDecorateComponent/decorateLogService">
+    <interface.java interface="com.qding.app.decorate.service.DecorateLogService"/> 
+    <scallop:binding.rmi host="localhost" port="9101" serviceName="DecorateLogRMIService"/>     
+  </service>
+	
+	
+	 
+  
+	
+
+
+</composite>
+
