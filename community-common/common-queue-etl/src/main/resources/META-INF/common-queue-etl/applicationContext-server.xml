@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.common.queue" />
+	<import
+		resource="classpath:META-INF/common-queue-etl/applicationContext-quartz.xml" />
+
+	<sca:reference name="msgQueueService"
+		type="com.qding.common.queue.service.MsgQueueService" />
+
+	<sca:reference name="retryQueueService"
+		type="com.qding.common.queue.service.RetryQueueService" />
+
+
+
+	<sca:reference name="potentialService"
+		type="com.qding.framework.user.service.PotentialService" />
+	<sca:reference name="publicsService"
+		type="com.qding.framework.publics.service.PublicsService" />
+
+
+
+	<bean id="msgEtl" class="com.qding.common.queue.etl.MsgEtl">
+
+		<property name="msgQueueService" ref="msgQueueService" />
+
+		<property name="retryQueueService" ref="retryQueueService" />
+		<property name="queueConfig" ref="queueConfig" />
+
+	</bean>
+	<bean id="retryEtl" class="com.qding.common.queue.etl.RetryEtl">
+		<property name="msgQueueService" ref="msgQueueService" />
+
+		<property name="retryQueueService" ref="retryQueueService" />
+
+		<property name="queueConfig" ref="queueConfig" />
+	</bean>
+
+
+	<bean id="weixinService"
+		class="com.qding.commnunity.common.weixin.service.impl.WeiXinServiceImpl"
+		scope="singleton">
+
+	</bean>
+
+
+	<bean id="queueConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="weixin" value-ref="weiXinQueueProcessService">
+				</entry>
+
+
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="weiXinQueueProcessService"
+		class="com.qding.common.queue.process.service.impl.QueueWeiXinProcessServiceImpl">
+		<property name="potentialService" ref="potentialService" />
+		<property name="msgQueueService" ref="msgQueueService" />
+		<property name="weixinService" ref="weixinService" />
+		<property name="retryQueueService" ref="retryQueueService" />
+		<property name="publicsService" ref="publicsService" />
+
+	</bean>
+
+
+
+
+
+
+
+
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.gemantic..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
+

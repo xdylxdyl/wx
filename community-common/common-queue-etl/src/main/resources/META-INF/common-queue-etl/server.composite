@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://CommonQueueComponent" xmlns:sample="http://CommonQueueComponent" name="CommonQueueComponent">
+ <component name="QueueEtlComponent">
+    <implementation.spring location="META-INF/common-queue-etl/applicationContext-server.xml" />
+  </component>
+ 
+  
+	<reference name = "msgQueueService" promote="QueueEtlComponent/msgQueueService">
+		<scallop:binding.rmi registryName = "msgQueue-common-queue-service-rmi" serviceName="MsgQueueRMIService"/>
+	</reference>
+	<reference name = "retryQueueService" promote="QueueEtlComponent/retryQueueService">
+		<scallop:binding.rmi registryName = "retryQueue-common-queue-service-rmi" serviceName="RetryQueueRMIService"/>
+	</reference>
+	
+		
+	<reference name = "potentialService" promote="QueueEtlComponent/potentialService">
+		<scallop:binding.rmi registryName = "potential-framework-user-service-rmi" serviceName="PotentialRMIService"/>
+	</reference>
+	
+	
+	
+	<reference name = "publicsService" promote="QueueEtlComponent/publicsService">
+		<scallop:binding.rmi registryName = "publics-framework-publics-service-rmi" serviceName="PublicsRMIService"/>
+	</reference>
+
+</composite>
+
