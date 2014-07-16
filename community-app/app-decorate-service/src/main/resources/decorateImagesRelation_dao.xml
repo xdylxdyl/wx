@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.app.decorate.model.DecorateImagesRelation"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getDecorateImagesRelationIdsByDecorateId"
+				sqlitem="select id from decorate_images_relation where decorate_id= ?"
+				keyProperty="decorateId" valueProperty="id" keyColumn="decorate_id" />
+						
+			
+					<map name="getDecorateImagesRelationIdByImageId"
+				sqlitem="select id from decorate_images_relation where image_id= ?"
+				keyProperty="imageId" valueProperty="id" keyColumn="image_id" />
+						
+			
+					<list name="getDecorateImagesRelationIdsAll" sqlitem="select id from decorate_images_relation where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="app_decorate" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

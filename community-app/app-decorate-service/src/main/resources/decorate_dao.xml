@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.app.decorate.model.Decorate"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getDecorateIdsByUserId"
+				sqlitem="select id from decorate where user_id  = ?"
+				keyProperty="userId" valueProperty="id" keyColumn="user_id" />
+					<list name="getDecorateIdsByVenderId"
+				sqlitem="select id from decorate where vender_id= ?"
+				keyProperty="venderId" valueProperty="id" keyColumn="vender_id" />
+					<list name="getDecorateIdsByPublicsId"
+				sqlitem="select id from decorate where publics_id= ?"
+				keyProperty="publicsId" valueProperty="id" keyColumn="publics_id" />
+					<list name="getDecorateIdsByRoomId"
+				sqlitem="select id from decorate where room_id  = ?"
+				keyProperty="roomId" valueProperty="id" keyColumn="room_id" />
+					<list name="getDecorateIdsByUserMobile"
+				sqlitem="select id from decorate where user_mobile  = ?"
+				keyProperty="userMobile" valueProperty="id" keyColumn="user_mobile" />
+						
+			
+						
+			
+					<list name="getDecorateIdsAll" sqlitem="select id from decorate where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="app_decorate" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

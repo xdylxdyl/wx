@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.app.decorate.model.DecorateVender"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getDecorateVenderIdsByVenderId"
+				sqlitem="select id from decorate_vender where vender_id= ?"
+				keyProperty="venderId" valueProperty="id" keyColumn="vender_id" />
+						
+			
+						
+			
+					<list name="getDecorateVenderIdsAll" sqlitem="select id from decorate_vender where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="app_decorate" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>
