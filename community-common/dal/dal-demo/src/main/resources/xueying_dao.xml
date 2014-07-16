@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.gemantic.analyse.dal.demo.model.XueYing"
+			listenerClass="" strategyProperty="userId" delProperty="userId">
+			<map name="getNameByUserId"
+				sqlitem="select name from xue_ying where user_id = ?"
+				keyProperty="userId" valueProperty="name" />
+			<map name="getAddressByUserId"
+				sqlitem="select address from xue_ying where user_id = ?"
+				keyProperty="userId" valueProperty="address" />
+			<map name="getGuidByNameAndUserId"
+				sqlitem="select guid from xue_ying where name = ? and user_id = ?"
+				keyProperty="name,userId" valueProperty="guid" />
+			<list name="getIdByUserId"
+				sqlitem="select user_id from xue_ying where user_id = ?"
+				keyProperty="userId" valueProperty="userId" />
+		</object>
+	</route>
+</dal>

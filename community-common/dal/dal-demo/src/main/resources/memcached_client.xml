@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<cache>
+		<datasource
+			name="default"
+			timeout="5000"
+			port="11211"
+			server="10.0.0.20"
+			maxActive="18" 
+			maxIdle="18" 
+			maxWait="-1" 
+		/>
+		<datasource
+			name="mem1"
+			timeout="5000"
+			port="11211"
+			server="10.0.0.20"
+			maxActive="18" 
+			maxIdle="18" 
+			maxWait="-1" 
+		/>
+		<datasource
+			name="mem2"
+			timeout="5000"
+			port="11211"
+			server="10.0.0.105"
+			maxActive="18" 
+			maxIdle="18" 
+			maxWait="-1" 
+		/>
+	</cache>
+		
+	<default>
+       <region listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+              <keyPattern value="$[0-9]" datasource ="default"/>
+		</region>
+    </default>
+	<regions>
+		<region name="com.gemantic.analyse.dal.demo.model.XueYing" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+              <keyPattern value="$[0-9]" datasource ="mem1"/>
+		</region>
+		<region name="getGuidByNameAndUserId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+              <keyPattern value="$[0-9]" datasource ="mem1"/>
+		</region>
+		<region name="getNameByUserId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+              <keyPattern value="$[0-9]" datasource ="mem2"/>
+		</region>
+		
+		<region name="getAddressByUserId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+              <keyPattern value="[0-4]$" datasource ="mem1"/>
+              <keyPattern value="[5-9]$" datasource ="mem2"/>
+		</region>
+		<region name="getIdByUserId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+              <keyPattern value="$[0-9]" datasource ="mem1"/>
+		</region>
+		
+	</regions>
+</root>
