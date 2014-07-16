@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+	<object name="com.gemantic.analyse.dal.demo.model.Group"
+			listenerClass="" strategyProperty="userId" delProperty="userId">
+			<list name="getIDSByUser_Id"
+				sqlitem="select id from groups where user_id = ?"
+				keyProperty="user_id" valueProperty="id" />
+				<list name="getIDSByName"
+				sqlitem="select id from groups where name = ?"
+				keyProperty="user_id" valueProperty="id" />
+			<!-- 说明：无缓存的情况下对于 >= 的情况可以直接使用 ,对于<符号，需要转义为&lt; -->
+			<list name="getReserch_Id"
+				sqlitem="select created_at from groups where id &lt;= ?"
+				keyProperty="id" valueProperty="id" />
+			<map name="getMaxId"
+				sqlitem="select max(id) from groups "
+				keyProperty="id" valueProperty="id" />
+			<map name="getIDSByNameAndUser_id"
+				sqlitem="select id from groups where name = ? and user_id = ?"
+				keyProperty="name,user_id" valueProperty="id" />
+			<map name="getIdByCreatedatAndUser_id"
+				sqlitem="select id from groups where created_at = ? and user_id = ?"
+				keyProperty="created_at,user_id" valueProperty="id" />
+			<!-- list查询由于会经过count查询，会有count()函数来包含所有需要查询的字段，所以直接使用函数 或者使用group by 会出错 -->
+			<list name="getMaxIdGroupByUser_id"
+			     sqlitem = "select avg(id) from groups where 1 = ?  "
+			     keyProperty="user_id" valueProperty="id"/>
+			
+		
+			<dbStrategy name="mutiDS" clasz="com.gemantic.dal.route.strategy.DefaultStrategy">
+			      <!-- <pattern value="[0-4]$" group="g1" /> -->
+			      <pattern value="[0-9]$" group="g2" />
+			</dbStrategy>
+		</object>
+	</route>
+</dal>

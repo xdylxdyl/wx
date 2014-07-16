@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<datasources>
+		<ds name="idCenterDS"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://10.0.0.20:3306/research_report"
+			username="analyse"
+			password="GemanticYes!"
+			maxActive=""
+			maxIdle=""
+			maxWait=""
+		/>
+		<!-- <ds name="idCenterDS"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://10.0.0.20:3306/id_generator"
+			username="analyse"
+			password="GemanticYes!"
+			maxActive=""
+			maxIdle=""
+			maxWait=""
+		/>-->
+        <ds name="group1"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://10.0.0.20:3306/jijin"
+			username="jijin_user"
+			password="jjP@ssW0rd"
+			maxActive=""
+			maxIdle=""
+			maxWait=""
+		/>
+		  <ds name="group2"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://10.0.0.20:3306/research_report"
+			username="analyse"
+			password="GemanticYes!"
+			maxActive=""
+			maxIdle=""
+			maxWait=""
+		/>
+		  <ds name="gangAo"
+			driverClassName="oracle.jdbc.OracleDriver"
+			url="jdbc:oracle:thin:@192.168.11.74:1521:ORCL"
+			username="jrgazx"
+			password="jrgazx"
+			maxActive=""
+			maxIdle=""
+			maxWait=""
+		/>
+	</datasources>
+	<groups>
+		<group name="g1" master="group1"  />	
+		<group name="g2" master="group2"  />		
+		<group name="gangAo" master="gangAo" />
+	</groups>
+</root>
+
