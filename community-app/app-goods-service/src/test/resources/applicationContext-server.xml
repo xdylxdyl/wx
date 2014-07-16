@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.app.goods" />
+
+
+
+	<bean id="providerService" class="com.qding.app.goods.service.impl.ProviderServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="providerPublicsRelationService"
+		class="com.qding.app.goods.service.impl.ProviderPublicsRelationServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="categoryService" class="com.qding.app.goods.service.impl.CategoryServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="goodsService" class="com.qding.app.goods.service.impl.GoodsServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+	<bean id="goodsPublicsRelationService"
+		class="com.qding.app.goods.service.impl.GoodsPublicsRelationServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+
+	<bean id="tagsService" class="com.qding.app.goods.service.impl.TagsServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="tagsPublicsRelationService"
+		class="com.qding.app.goods.service.impl.TagsPublicsRelationServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="tagsGoodsRelationService"
+		class="com.qding.app.goods.service.impl.TagsGoodsRelationServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="addressService" class="com.qding.app.goods.service.impl.AddressServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="addressUserRelationService"
+		class="com.qding.app.goods.service.impl.AddressUserRelationServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="gorderService" class="com.qding.app.goods.service.impl.GorderServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="gorderGoodsRelationService"
+		class="com.qding.app.goods.service.impl.GorderGoodsRelationServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="cartService" class="com.qding.app.goods.service.impl.CartServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+	<bean id="cartGoodsRelationService"
+		class="com.qding.app.goods.service.impl.CartGoodsRelationServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+
+	<bean id="dao" class="com.gemantic.dal.dao.impl.CompositeDaoImpl" />
+
+
+	<bean id="baseDaoService"
+		class="com.qding.common.dao.base.service.impl.BaseDaoServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean> 
+
+
+
+
+</beans>
+
