@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.common.pay" />
+
+	<sca:service name="payOrderService"
+		type="com.qding.common.pay.service.PayOrderService" target="payInterface" />
+	
+		
+	<bean id="payConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="merchantName" value="北京龙湖集团"></entry>
+				<entry key="merchantId" value="630056832596"></entry>
+				<entry key="merchantOrderCurrency" value="156"></entry>
+				<entry key="gwType" value="01"></entry>
+				<entry key="transTimeout" value="10"></entry> <!-- 超时时间 单位:分钟 -->
+				
+				<entry key="key" value="123456"></entry>
+				<entry key="keyFile" value="/data/common-pay-service/630056832596.pfx"></entry>
+				<entry key="payUrl" value="http://58.246.136.11:8089/wapDetect/gateWay!gate.ac"></entry>
+				
+				<entry key="publicKey" value="000000"></entry>
+				<entry key="publicKeyFile" value="/data/common-pay-service/5101200070003100001.cer"></entry>
+				
+				<!-- <entry key="keyFile" value="d:/data/630056832596.pfx"></entry>
+				<entry key="publicKeyFile" value="d:/data/5101200070003100001.cer"></entry> -->
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="llPayConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<!-- 银通公钥 -->
+				<entry key="YT_PUB_KEY" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCSS/DiwdCf/aZsxxcacDnooGph3d2JOj5GXWi+q3gznZauZjkNP8SKl3J2liP0O6rU/Y/29+IUe+GTMhMOFJuZm1htAtKiu5ekW0GlBMWxf4FPkYlQkPE0FtaoMP3gYfh+OwI+fIRrpW3ySn3mScnc6Z700nU/VYrRkfcSCbSnRwIDAQAB"></entry>
+				<!-- 商户私钥 -->
+				<entry key="TRADER_PRI_KEY" value="qianding2014"></entry>
+				<entry key="MD5_KEY" value="qianding2014"></entry>
+				<!-- 唱户业务类型-->
+				<entry key="TRAN_TYPE" value="101001"></entry>
+				<!-- 商户编号-->
+				<entry key="OID_PARTNER" value="201406121000001319"></entry>
+				<!-- 签名方式 RSA或MD5-->
+				<entry key="SIGN_TYPE" value="MD5"></entry>
+				<entry key="VERSION" value="1.1"></entry>
+				<!-- 连连银通连连钱包WAP支付服务地址-->
+				<entry key="SERVER_URL" value="https://yintong.com.cn/llpayh5/payment.htm"></entry>
+				<!-- 3:WAP-->
+				<entry key="REQUEST_TYPE" value="3"></entry>
+				<!-- 过期时间 单位分钟 -->
+				<entry key="TIMEOUT" value="10"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	 <bean id="aliPayConfig" class="java.util.HashMap">
+        <constructor-arg>
+            <map>
+                <!-- 支付网关地址 -->
+                <entry key="ali_gateway" value="http://wappaygw.alipay.com/service/rest.htm?"></entry>
+                <!-- 支付网关地址 -->
+                <entry key="verify_url" value="https://mapi.alipay.com/gateway.do?service=notify_verify"></entry>
+                <!-- 构造访问query_timestamp接口的URL串 
+                <entry key="query_timestamp_url" value="https://mapi.alipay.com/gateway.do?service=query_timestamp&partner="></entry>-->
+                <!-- 合作身份者ID -->
+                <entry key="partner" value="2088511096126863"></entry>
+                <!-- 支付宝账户 -->
+                <entry key="seller_email" value="chenxiaoguang@qding.me"></entry>
+                <!-- 交易安全检验码 -->
+                <entry key="key" value="aly4szug5vcfvm4idmgydg003ampa9w0"></entry>
+                <!-- 商户的私钥 -->
+                <entry key="private_key" value="MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBAOQzQdHN3up4qQXa+1xN7yjg+kppFvA5+c514lvjFHMT+OocM0VyRTxA0D+GtTQkBhsrb7O0GGMFC5pmwWZikw3hWw1fICVtU/uen98CUzrlG4Irw+5d4fuPYcvZluzjTlgJwxKtuY9ivVzR8bbSz6MhjFH9FgwrlyIe2236BzY7AgMBAAECgYEAk9iRoDhdYFPkTiLeD6N+e2GnR2ZmsiUdr6G4kgfBS/14m1TB8xBhwvPK+B1ycOGWAyxVJnxcAGtYZSSF0Ku00WOsH1WQcvQPM29JPfEoRWlku1Ibjlsv2Zs8cQ8qmvpemhkKTadGO5VzK08E/KG+2X5bbk7HnZFFLlXoja2nE6ECQQD/s9dGdLcdEmOPkGx4WzibNJIRAg4wN3IO0FCCq4NRxMoyVjzhDFSoz7NSLg2j1BzjdIw1NdqH3d3WlXkdQeS1AkEA5Hc5jxvP6UOx+CteBnJKMerEpywVVuSCWFQ/Vtloho39Hl/YFMM06oHUzLgimGBJ/dDjpe6Kk7e5wsTvG/n1LwJBAOKsma1CsEVcVNgizpWPQEoOO2JKcSt7K2hIcOa1hq9JBXnECynxlWck4LF8U+kkkwtr+RL+j6AcJZkhXoF6NXUCQQC7VlQZV/ntUXgeghkQeikCs3pbhhddb/S9zx887Pr70nQqsvaxV7wNSzaeQ6MChXpGqUHyLx7sr6uf3PIgY587AkEA/zI7rualRFwygyLaX3qouN5q8Hd6G0eTnDF24q5aL0HzCoZOcvgetdBoPtJcYJgBn3kLgeLK8YhOhEGg/8rPGg=="></entry>
+                <!-- 支付宝的公钥 -->
+                <entry key="ali_public_key" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDkM0HRzd7qeKkF2vtcTe8o4PpKaRbwOfnOdeJb4xRzE/jqHDNFckU8QNA/hrU0JAYbK2+ztBhjBQuaZsFmYpMN4VsNXyAlbVP7np/fAlM65RuCK8PuXeH7j2HL2Zbs405YCcMSrbmPYr1c0fG20s+jIYxR/RYMK5ciHttt+gc2OwIDAQAB"></entry>
+                <!-- 签名方式，选择项：0001(RSA)、MD5 -->
+                <entry key="sign_type" value="MD5"></entry>
+            </map>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="processServiceConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="payOrder" value-ref="payOrderService">
+				</entry>
+				<entry key="yintongPay" value-ref="yintongPayService">
+				</entry>
+				<entry key="aliPay" value-ref="aliPayService">
+				</entry>
+
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	
+	<bean id="payInterface"
+		class="com.qding.common.pay.service.impl.PayInterfaceImpl">
+	</bean>
+	
+	<bean id="payOrderService"
+		class="com.qding.common.pay.service.impl.PayOrderServiceImpl">
+		<property name="payConfig" ref="payConfig" />
+	</bean>
+		
+	<bean id="yintongPayService"
+		class="com.qding.common.pay.service.impl.YintongPayServiceImpl">
+		<property name="llPayConfig" ref="llPayConfig" />
+	</bean>
+	
+	<bean id="aliPayService"
+		class="com.qding.common.pay.service.impl.AliPayServiceImpl">
+		<property name="aliPayConfig" ref="aliPayConfig" />
+	</bean>
+
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.gemantic..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
+
