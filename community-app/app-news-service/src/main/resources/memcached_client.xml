@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<cache>
+		<datasource
+			name="default"
+			timeout="300"
+			port="11211"
+			server="cache.app.news"
+			maxActive="18" 
+			maxIdle="18" 
+			maxWait="-1" 
+		/>
+	</cache>
+	<regions>
+		
+						<region name="com.qding.app.news.model.News" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.app.news.model.NewsPublicsRelation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+										
+				                    
+                                        
+			<region name="getNewsIdsByPublicsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getNewsIdsByPublicsIDAndStatus" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getPublicsIDsByNewsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getNewsPublicsRelationIdsByPublicsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getNewsPublicsRelationIdsByNewsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getNewsIDsByPublicsID" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+					
+			
+			
+			
+		
+		
+	
+
+
+	</regions>
+</root>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.app.news.model.NewsPublicsRelation"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getPublicsIDsByNewsID"
+				sqlitem="select publics_id  from news_publics_relation where news_id = ?"
+				keyProperty="newsID" valueProperty="publicsID" keyColumn="news_id" />
+					<list name="getNewsPublicsRelationIdsByPublicsID"
+				sqlitem="select id from news_publics_relation where publics_id = ?"
+				keyProperty="publicsID" valueProperty="id" keyColumn="publics_id" />
+					<list name="getNewsPublicsRelationIdsByNewsID"
+				sqlitem="select id from news_publics_relation where news_id = ?"
+				keyProperty="newsID" valueProperty="id" keyColumn="news_id" />
+					<list name="getNewsIDsByPublicsID"
+				sqlitem="select news_id from news_publics_relation where  publics_id = ?"
+				keyProperty="publicsID" valueProperty="newsID" keyColumn="publics_id" />
+						
+			
+						
+			
+					<list name="getNewsPublicsRelationIdsAll" sqlitem="select id from news_publics_relation where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="appNews" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

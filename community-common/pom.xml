@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>qding-community</groupId>
+		<artifactId>wx-community</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>community-common</artifactId>
+	<packaging>pom</packaging>
+	<version>0.0.1</version>
+	<modules>
+
+        <module>common-util-lib</module>	
+        <module>common-tags-lib</module>	
+		<module>wx-demo-core</module>
+		<module>wx-demo-service</module>
+		<module>common-storage-lib</module>
+		<module>common-wx-lib</module>		
+	
+		<module>common-sms-core</module>
+		<module>common-sms-service</module>
+	    <module>common-pay-core</module>
+		<module>common-pay-service</module>
+		<module>common-dao-lib</module>
+		<module>common-dao-core</module>
+		<module>common-queue-core</module>
+		<module>common-queue-service</module>
+		<module>common-queue-etl</module>
+        <module>common-payment-core</module>
+        <module>common-payment-service</module>
+
+        <module>commons-code-demo</module>
+        <module>commons-code-manager</module>
+  </modules>
+</project>
