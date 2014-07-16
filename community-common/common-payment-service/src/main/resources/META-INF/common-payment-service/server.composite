@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://CommonPaymentComponent" xmlns:sample="http://CommonPaymentComponent" name="CommonPaymentComponent">
+
+
+  <component name="CommonPaymentComponent">
+    <implementation.spring location="META-INF/common-payment-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="cashPaymentService" promote="CommonPaymentComponent/cashPaymentService">
+    <interface.java interface="com.qding.common.payment.service.CashPaymentService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="CashPaymentRMIService"/>     
+  </service>
+	  <service name="cashPaymentApplicationService" promote="CommonPaymentComponent/cashPaymentApplicationService">
+    <interface.java interface="com.qding.common.payment.service.CashPaymentApplicationService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="CashPaymentApplicationRMIService"/>     
+  </service>
+	  <service name="cashPaymentLogService" promote="CommonPaymentComponent/cashPaymentLogService">
+    <interface.java interface="com.qding.common.payment.service.CashPaymentLogService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="CashPaymentLogRMIService"/>     
+  </service>
+	  <service name="cashPaymentReconciliationService" promote="CommonPaymentComponent/cashPaymentReconciliationService">
+    <interface.java interface="com.qding.common.payment.service.CashPaymentReconciliationService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="CashPaymentReconciliationRMIService"/>     
+  </service>
+	  <service name="commissionsService" promote="CommonPaymentComponent/commissionsService">
+    <interface.java interface="com.qding.common.payment.service.CommissionsService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="CommissionsRMIService"/>     
+  </service>
+	  <service name="gorderFeesService" promote="CommonPaymentComponent/gorderFeesService">
+    <interface.java interface="com.qding.common.payment.service.GorderFeesService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="GorderFeesRMIService"/>     
+  </service>
+	  <service name="paymentSerialLogService" promote="CommonPaymentComponent/paymentSerialLogService">
+    <interface.java interface="com.qding.common.payment.service.PaymentSerialLogService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="PaymentSerialLogRMIService"/>     
+  </service>
+	  <service name="paymentTypeService" promote="CommonPaymentComponent/paymentTypeService">
+    <interface.java interface="com.qding.common.payment.service.PaymentTypeService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="PaymentTypeRMIService"/>     
+  </service>
+	  <service name="posPaymentService" promote="CommonPaymentComponent/posPaymentService">
+    <interface.java interface="com.qding.common.payment.service.PosPaymentService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="PosPaymentRMIService"/>     
+  </service>
+	  <service name="posPaymentReconciliationService" promote="CommonPaymentComponent/posPaymentReconciliationService">
+    <interface.java interface="com.qding.common.payment.service.PosPaymentReconciliationService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="PosPaymentReconciliationRMIService"/>     
+  </service>
+	  <service name="posPaymentLogService" promote="CommonPaymentComponent/posPaymentLogService">
+    <interface.java interface="com.qding.common.payment.service.PosPaymentLogService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="PosPaymentLogRMIService"/>     
+  </service>
+	  <service name="posPaymentFileLogService" promote="CommonPaymentComponent/posPaymentFileLogService">
+    <interface.java interface="com.qding.common.payment.service.PosPaymentFileLogService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="PosPaymentFileLogRMIService"/>     
+  </service>
+	  <service name="refundService" promote="CommonPaymentComponent/refundService">
+    <interface.java interface="com.qding.common.payment.service.RefundService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="RefundRMIService"/>     
+  </service>
+	  <service name="unionPaymentService" promote="CommonPaymentComponent/unionPaymentService">
+    <interface.java interface="com.qding.common.payment.service.UnionPaymentService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="UnionPaymentRMIService"/>     
+  </service>
+	  <service name="unionPaymentLogService" promote="CommonPaymentComponent/unionPaymentLogService">
+    <interface.java interface="com.qding.common.payment.service.UnionPaymentLogService"/> 
+    <scallop:binding.rmi host="localhost"  port="9091" serviceName="UnionPaymentLogRMIService"/>     
+  </service>
+	
+	
+	 
+  
+	
+
+
+</composite>
+

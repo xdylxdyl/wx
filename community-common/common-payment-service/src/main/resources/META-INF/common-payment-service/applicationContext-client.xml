@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+	
+	<context:annotation-config />
+    <context:component-scan base-package="com.gemantic"/>  
+	
+	
+	<bean id="scaClient"
+		class="com.gemantic.common.sca.service.SCAClientBean">
+		<property name="resource" value="client.composite" />
+	</bean>
+	
+	
+	<!-- ============================================================ -->
+	<!-- ==                    CommonPaymentComponent                       == -->
+	<!-- ============================================================ -->
+	
+	 
+	
+	
+	<!-- CashPaymentService  -->
+
+	
+	<bean id="cashPaymentService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="CashPaymentServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.CashPaymentService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- CashPaymentApplicationService  -->
+
+	
+	<bean id="cashPaymentApplicationService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="CashPaymentApplicationServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.CashPaymentApplicationService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- CashPaymentLogService  -->
+
+	
+	<bean id="cashPaymentLogService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="CashPaymentLogServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.CashPaymentLogService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- CashPaymentReconciliationService  -->
+
+	
+	<bean id="cashPaymentReconciliationService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="CashPaymentReconciliationServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.CashPaymentReconciliationService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- CommissionsService  -->
+
+	
+	<bean id="commissionsService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="CommissionsServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.CommissionsService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- GorderFeesService  -->
+
+	
+	<bean id="gorderFeesService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="GorderFeesServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.GorderFeesService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- PaymentSerialLogService  -->
+
+	
+	<bean id="paymentSerialLogService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PaymentSerialLogServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.PaymentSerialLogService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- PaymentTypeService  -->
+
+	
+	<bean id="paymentTypeService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PaymentTypeServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.PaymentTypeService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- PosPaymentService  -->
+
+	
+	<bean id="posPaymentService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PosPaymentServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.PosPaymentService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- PosPaymentReconciliationService  -->
+
+	
+	<bean id="posPaymentReconciliationService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PosPaymentReconciliationServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.PosPaymentReconciliationService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- PosPaymentLogService  -->
+
+	
+	<bean id="posPaymentLogService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PosPaymentLogServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.PosPaymentLogService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- PosPaymentFileLogService  -->
+
+	
+	<bean id="posPaymentFileLogService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PosPaymentFileLogServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.PosPaymentFileLogService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- RefundService  -->
+
+	
+	<bean id="refundService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="RefundServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.RefundService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- UnionPaymentService  -->
+
+	
+	<bean id="unionPaymentService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="UnionPaymentServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.UnionPaymentService" />
+	</bean>
+
+	
+	
+	
+	
+	<!-- UnionPaymentLogService  -->
+
+	
+	<bean id="unionPaymentLogService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="UnionPaymentLogServiceComponent" />
+		<property name="className"
+			value="com.qding.common.payment.service.UnionPaymentLogService" />
+	</bean>
+
+	
+		
+	
+	
+	
+	<!-- performance -->
+	
+	 <aop:aspectj-autoproxy />
+        <bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume"/>
+        <aop:config>
+            <aop:aspect ref="aroundLoggingTime">
+                <aop:pointcut id="publicServiceMethod" expression="execution(* com.gemantic..service.*.*(..)) &amp;&amp; (!execution(* com.gemantic.common.sca.service.*.*(..)))" />
+                <aop:around method="around" pointcut-ref="publicServiceMethod"/>
+            </aop:aspect>
+        </aop:config>
+</beans>
+

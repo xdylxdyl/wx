@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.common.payment" />
+
+	
+		<sca:service name="cashPaymentService"
+		type="com.qding.common.payment.service.CashPaymentService" target="cashPaymentService" />
+		
+	
+		<sca:service name="cashPaymentApplicationService"
+		type="com.qding.common.payment.service.CashPaymentApplicationService" target="cashPaymentApplicationService" />
+		
+	
+		<sca:service name="cashPaymentLogService"
+		type="com.qding.common.payment.service.CashPaymentLogService" target="cashPaymentLogService" />
+		
+	
+		<sca:service name="cashPaymentReconciliationService"
+		type="com.qding.common.payment.service.CashPaymentReconciliationService" target="cashPaymentReconciliationService" />
+		
+	
+		<sca:service name="commissionsService"
+		type="com.qding.common.payment.service.CommissionsService" target="commissionsService" />
+		
+	
+		<sca:service name="gorderFeesService"
+		type="com.qding.common.payment.service.GorderFeesService" target="gorderFeesService" />
+		
+	
+		<sca:service name="paymentSerialLogService"
+		type="com.qding.common.payment.service.PaymentSerialLogService" target="paymentSerialLogService" />
+		
+	
+		<sca:service name="paymentTypeService"
+		type="com.qding.common.payment.service.PaymentTypeService" target="paymentTypeService" />
+		
+	
+		<sca:service name="posPaymentService"
+		type="com.qding.common.payment.service.PosPaymentService" target="posPaymentService" />
+		
+	
+		<sca:service name="posPaymentReconciliationService"
+		type="com.qding.common.payment.service.PosPaymentReconciliationService" target="posPaymentReconciliationService" />
+		
+	
+		<sca:service name="posPaymentLogService"
+		type="com.qding.common.payment.service.PosPaymentLogService" target="posPaymentLogService" />
+		
+	
+		<sca:service name="posPaymentFileLogService"
+		type="com.qding.common.payment.service.PosPaymentFileLogService" target="posPaymentFileLogService" />
+		
+	
+		<sca:service name="refundService"
+		type="com.qding.common.payment.service.RefundService" target="refundService" />
+		
+	
+		<sca:service name="unionPaymentService"
+		type="com.qding.common.payment.service.UnionPaymentService" target="unionPaymentService" />
+		
+	
+		<sca:service name="unionPaymentLogService"
+		type="com.qding.common.payment.service.UnionPaymentLogService" target="unionPaymentLogService" />
+		
+	
+		
+	
+	 
+	
+	
+
+
+	
+
+
+
+	
+		
+	<bean id="cashPaymentService"
+		class="com.qding.common.payment.service.impl.CashPaymentServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="cashPaymentApplicationService"
+		class="com.qding.common.payment.service.impl.CashPaymentApplicationServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="cashPaymentLogService"
+		class="com.qding.common.payment.service.impl.CashPaymentLogServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="cashPaymentReconciliationService"
+		class="com.qding.common.payment.service.impl.CashPaymentReconciliationServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="commissionsService"
+		class="com.qding.common.payment.service.impl.CommissionsServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="gorderFeesService"
+		class="com.qding.common.payment.service.impl.GorderFeesServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="paymentSerialLogService"
+		class="com.qding.common.payment.service.impl.PaymentSerialLogServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="paymentTypeService"
+		class="com.qding.common.payment.service.impl.PaymentTypeServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="posPaymentService"
+		class="com.qding.common.payment.service.impl.PosPaymentServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="posPaymentReconciliationService"
+		class="com.qding.common.payment.service.impl.PosPaymentReconciliationServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="posPaymentLogService"
+		class="com.qding.common.payment.service.impl.PosPaymentLogServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="posPaymentFileLogService"
+		class="com.qding.common.payment.service.impl.PosPaymentFileLogServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="refundService"
+		class="com.qding.common.payment.service.impl.RefundServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="unionPaymentService"
+		class="com.qding.common.payment.service.impl.UnionPaymentServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+	<bean id="unionPaymentLogService"
+		class="com.qding.common.payment.service.impl.UnionPaymentLogServiceImpl" parent="baseDaoService">
+
+	</bean>
+		
+
+<bean id="dao" class="com.gemantic.dal.dao.impl.CompositeDaoImpl" />
+
+	<bean id="baseDaoService"
+		class="com.qding.common.dao.base.service.impl.BaseDaoServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+
+
+
+
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.gemantic..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
+
