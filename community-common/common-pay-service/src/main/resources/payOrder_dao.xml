@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.pay.model.PayOrder"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+						
+			
+					<map name="getPayOrderIdByOrderNumber"
+				sqlitem="select id from pay_order  where  order_number = ?"
+				keyProperty="orderNumber" valueProperty="id" keyColumn="order_number" />
+						
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="commonPay" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>
