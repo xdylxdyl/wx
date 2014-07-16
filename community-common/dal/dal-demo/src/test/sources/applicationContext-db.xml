@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd ">
+
+	<bean id="dbJijin" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.gjt.mm.mysql.Driver" />
+		<property name="url" value="jdbc:mysql://10.0.0.20:3306/jijin" />
+		<property name="username" value="jijin_user"></property>
+		<property name="password" value="jjP@ssW0rd"></property>
+	</bean>
+	<bean id="dbResearchReport" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.gjt.mm.mysql.Driver" />
+		<property name="url" value="jdbc:mysql://10.0.0.20:3306/research_report" />
+		<property name="username" value="analyse"></property>
+		<property name="password" value="GemanticYes!"></property>
+	</bean>
+	 <bean id="dao"  class="com.gemantic.dal.dao.impl.DBDaoImpl"/>
+</beans>
