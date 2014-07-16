@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://AppNewsComponent" xmlns:sample="http://AppNewsComponent" name="AppNewsComponent">
+
+
+  <component name="AppNewsComponent">
+    <implementation.spring location="META-INF/app-news-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="newsService" promote="AppNewsComponent/newsService">
+    <interface.java interface="com.qding.app.news.service.NewsService"/> 
+    <scallop:binding.rmi host="localhost" port="9031" serviceName="NewsRMIService"/>     
+  </service>
+	  <service name="newsPublicsRelationService" promote="AppNewsComponent/newsPublicsRelationService">
+    <interface.java interface="com.qding.app.news.service.NewsPublicsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9031" serviceName="NewsPublicsRelationRMIService"/>     
+  </service>
+	
+	
+	 
+  
+	
+
+
+</composite>
+
