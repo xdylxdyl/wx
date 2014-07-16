@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://CommonPayComponent" xmlns:sample="http://CommonPayComponent" name="CommonPayComponent">
+
+
+  <component name="CommonPayComponent">
+    <implementation.spring location="META-INF/common-pay-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="payOrderService" promote="CommonPayComponent/payOrderService">
+    <interface.java interface="com.qding.common.pay.service.PayOrderService"/> 
+    <scallop:binding.rmi host="localhost" port="9051" serviceName="PayOrderRMIService"/>     
+  </service>
+	
+	
+	 
+  
+	
+
+
+</composite>
+
