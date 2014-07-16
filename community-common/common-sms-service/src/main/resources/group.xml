@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<datasources>
+		<ds name="commonSms"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://db.common.sms:3306/common_sms?defaultBatchValue=1000"
+			username="root"
+			password="123456"
+			maxActive="50"
+			maxIdle="50"
+			maxWait="10"
+            check="true"
+		/>
+		 <ds name="idCenterDS"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://gemantic.weibo.db:3306/resources?defaultBatchValue=1000"
+			username="root"
+			password="123456"
+			maxActive=""
+			maxIdle=""
+			maxWait=""
+            check="true"
+		/>  
+	</datasources>
+	<groups>
+		<group name="commonSms" master="commonSms"  />			
+	</groups>
+</root>
+
+

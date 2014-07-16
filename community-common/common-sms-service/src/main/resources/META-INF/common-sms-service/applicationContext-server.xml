@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.common.sms" />
+
+
+	<sca:service name="smsService" type="com.qding.common.sms.service.SmsService"
+		target="smsService" />
+
+	<sca:service name="sendSmsService"
+		type="com.qding.common.sms.service.SendSmsService" target="sendSmsService" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<bean id="smsService" class="com.qding.common.sms.service.impl.SmsServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+
+	<bean id="dao" class="com.gemantic.dal.dao.impl.CompositeDaoImpl" />
+
+
+	<bean id="sendSmsService" class="com.qding.common.sms.service.impl.SendSmsServiceImpl">
+		
+		<property name="smsConfig" ref="smsConfig" />
+	</bean>
+
+	<bean id="smsConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="url" value="http://api.taovip.com/v1/sms/send.json"></entry>
+				<entry key="key" value="781179490632feaf13ab0648d9a81faf"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.qding..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
+

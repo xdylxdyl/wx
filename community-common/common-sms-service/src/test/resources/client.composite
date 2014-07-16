@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0" xmlns:scallop="http://scallop/xmlns/sca/1.0"
+           targetNamespace="http://sns.sohu.com/home/composite" xmlns:sample="http://sns.sohu.com/home/composite" name="HomeComposite">
+	
+
+
+
+
+    	
+	
+	 <!-- CommonSmsComponent -->
+	 
+	     <component name = "SmsServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.sms.client.SmsSCAClient"/>
+    	   
+    	<reference name = "smsService">
+    		<scallop:binding.rmi registryName = "sms-common-sms-service-rmi" serviceName="SmsRMIService"/>
+    	</reference>
+    </component >
+
+	<!-- CommonSendSmsComponent -->
+	     <component name = "SendSmsServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.sms.client.SendSmsSCAClient"/>
+    	   
+    	<reference name = "sendSmsService">
+    		<scallop:binding.rmi registryName = "sms-common-sendsms-service-rmi" serviceName="SendSmsRMIService"/>
+    	</reference>
+    </component >	
+    	
+	
+</composite>
+

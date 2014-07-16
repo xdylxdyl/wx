@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.sms.model.Sms"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+							<map name="getSmsIdByMobileAndTypeAndVerifyCode"
+				sqlitem="select id from sms where mobile = ? and type = ? and message = ?"
+				keyProperty="mobile,type,message" valueProperty="id" keyColumn="mobile,type,message" />
+				
+			
+					<map name="getSmsIdByMobileAndType"
+				sqlitem="select id from sms where mobile = ? and type = ?"
+				keyProperty="mobile,type" valueProperty="id" keyColumn="mobile,type" />
+						
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="commonSms" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://CommonSmsComponent" xmlns:sample="http://CommonSmsComponent" name="CommonSmsComponent">
+
+
+  <component name="CommonSmsComponent">
+    <implementation.spring location="META-INF/common-sms-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="smsService" promote="CommonSmsComponent/smsService">
+    <interface.java interface="com.qding.common.sms.service.SmsService"/> 
+    <scallop:binding.rmi host="localhost" port="9021" serviceName="SmsRMIService"/>     
+  </service>
+
+   <service name="sendSmsService" promote="CommonSmsComponent/sendSmsService">
+    <interface.java interface="com.qding.common.sms.service.SendSmsService"/> 
+    <scallop:binding.rmi host="localhost" port="9021" serviceName="SendSmsRMIService"/>     
+  </service>
+	
+	
+	 
+  
+	
+
+
+</composite>
+
