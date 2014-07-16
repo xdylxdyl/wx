@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>scallop-modules</artifactId>
+		<groupId>scallop</groupId>
+		<version>1.5</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<groupId>scallop</groupId>
+	<artifactId>scallop-binding-jms</artifactId>
+	<name>Scallop binding jms</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.tuscany.sca</groupId>
+			<artifactId>tuscany-assembly-xml</artifactId>
+			<version>${tuscany.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>scallop</groupId>
+			<artifactId>scallop-assembly-xsd</artifactId>
+			<version>1.5</version>
+	  </dependency>
+			
+		<dependency>
+				<groupId>junit</groupId>
+			<artifactId>junit-dep</artifactId>
+			<version>4.5</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	
+
+</project>
