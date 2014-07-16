@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.Refund"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getRefundIdsByGorderCode"
+				sqlitem="select id from refund where gorder_code  = ?"
+				keyProperty="gorderCode" valueProperty="id" keyColumn="gorder_code" />
+						
+			
+					<map name="getRefundIdByGorderCodeAndGoodsId"
+				sqlitem="select id from refund where gorder_code  = ? and goods_id = ?"
+				keyProperty="gorderCode,goodsId" valueProperty="id" keyColumn="gorder_code,goods_id" />
+						
+			
+					<list name="getRefundIdsAll" sqlitem="select id from refund where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.CashPaymentApplication"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getCashPaymentApplicationIdsByApplicantsAndTypeAndStatus"
+				sqlitem="select id from cash_payment_application where applicants  = ? and type = ? and status = ?"
+				keyProperty="applicants,type,status" valueProperty="id" keyColumn="applicants,type,status" />
+					<list name="getCashPaymentApplicationIdsByType"
+				sqlitem="select id from cash_payment_application where type  = ?"
+				keyProperty="type" valueProperty="id" keyColumn="type" />
+					<list name="getCashPaymentApplicationIdsByApplicants"
+				sqlitem="select id from cash_payment_application where applicants  = ?"
+				keyProperty="applicants" valueProperty="id" keyColumn="applicants" />
+					<list name="getCashPaymentApplicationIdsByReceiverAndStatusAndType"
+				sqlitem="select id from cash_payment_application where receiver  = ? and status = ? and type = ?"
+				keyProperty="receiver,status,type" valueProperty="id" keyColumn="receiver,status,type" />
+					<list name="getCashPaymentApplicationIdsByReceiver"
+				sqlitem="select id from cash_payment_application where receiver  = ?"
+				keyProperty="receiver" valueProperty="id" keyColumn="receiver" />
+					<list name="getCashPaymentApplicationIdsByStatus"
+				sqlitem="select id from cash_payment_application where status  = ?"
+				keyProperty="status" valueProperty="id" keyColumn="status" />
+						
+			
+						
+			
+					<list name="getCashPaymentApplicationIdsAll" sqlitem="select id from cash_payment_application where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.UnionPaymentLog"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getUnionPaymentLogIdsByUnionPaymentId"
+				sqlitem="select id from union_payment_log where union_payment_id  = ?"
+				keyProperty="unionPaymentId" valueProperty="id" keyColumn="union_payment_id" />
+						
+			
+						
+			
+					<list name="getUnionPaymentLogIdsAll" sqlitem="select id from union_payment_log where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

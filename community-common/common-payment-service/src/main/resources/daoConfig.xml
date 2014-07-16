@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<list>
+		
+				
+		
+		<config>
+			<path>cashPayment_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>cashPaymentApplication_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>cashPaymentLog_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>cashPaymentReconciliation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>commissions_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>gorderFees_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>paymentSerialLog_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>paymentType_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>posPayment_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>posPaymentReconciliation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>posPaymentLog_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>posPaymentFileLog_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>refund_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>unionPayment_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>unionPaymentLog_dao.xml</path>
+		</config>
+						
+		
+		
+	</list>
+
+	<default>
+		<dbStrategy name=""
+			clasz="com.gemantic.dal.route.strategy.DefaultStrategy">
+			<pattern value="[0-9]$" group="g1" />
+		</dbStrategy>
+		<listenerClass className="" />
+		<idCenterDS ds="idCenterDS" />
+	</default>
+</dal>                

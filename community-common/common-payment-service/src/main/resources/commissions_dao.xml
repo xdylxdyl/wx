@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.Commissions"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getCommissionsIdsByGorderCode"
+				sqlitem="select id from commissions where gorder_code  = ?"
+				keyProperty="gorderCode" valueProperty="id" keyColumn="gorder_code" />
+						
+			
+					<map name="getCommissionsIdByGorderCodeAndType"
+				sqlitem="select id from commissions where gorder_code = ? and type = ?"
+				keyProperty="gorderCode,type" valueProperty="id" keyColumn="gorder_code,type" />
+						
+			
+					<list name="getCommissionsIdsAll" sqlitem="select id from commissions where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

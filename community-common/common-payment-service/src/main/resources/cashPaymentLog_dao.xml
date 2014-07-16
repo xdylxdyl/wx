@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.CashPaymentLog"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getCashPaymentLogIdsByCashPaymentId"
+				sqlitem="select id from cash_payment_log where cash_payment_id  = ?"
+				keyProperty="cashPaymentId" valueProperty="id" keyColumn="cash_payment_id" />
+					<list name="getCashPaymentLogIdsByStatus"
+				sqlitem="select id from cash_payment_log where status = ?"
+				keyProperty="status" valueProperty="id" keyColumn="status" />
+						
+			
+						
+			
+					<list name="getCashPaymentLogIdsAll" sqlitem="select id from cash_payment_log where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

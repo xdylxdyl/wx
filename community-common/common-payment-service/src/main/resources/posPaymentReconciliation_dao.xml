@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.PosPaymentReconciliation"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getPosPaymentReconciliationIdsByGorderCode"
+				sqlitem="select id from pos_payment_reconciliation where gorder_code  = ?"
+				keyProperty="gorderCode" valueProperty="id" keyColumn="gorder_code" />
+						
+			
+					<map name="getPosPaymentReconciliationIdByGorderCodeAndQdCode"
+				sqlitem="select id from pos_payment_reconciliation where gorder_code  = ? and qd_code = ?"
+				keyProperty="gorderCode,qdCode" valueProperty="id" keyColumn="gorder_code,qd_code" />
+						
+			
+					<list name="getPosPaymentReconciliationIdsAll" sqlitem="select id from pos_payment_reconciliation where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

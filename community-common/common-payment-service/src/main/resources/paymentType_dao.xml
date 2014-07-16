@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.PaymentType"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getPaymentTypeIdsByType"
+				sqlitem="select id from payment_type where type  = ?"
+				keyProperty="type" valueProperty="id" keyColumn="type" />
+						
+			
+						
+			
+					<list name="getPaymentTypeIdsAll" sqlitem="select id from payment_type where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

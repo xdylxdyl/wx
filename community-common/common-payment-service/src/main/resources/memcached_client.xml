@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<cache>
+		<datasource
+			name="default"
+			timeout="300"
+			port="11211"
+			server="cache.common.payment"
+			maxActive="18" 
+			maxIdle="18" 
+			maxWait="-1" 
+		/>
+	</cache>
+	<regions>
+		
+						<region name="com.qding.common.payment.model.CashPayment" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.CashPaymentApplication" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.CashPaymentLog" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.CashPaymentReconciliation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.Commissions" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.GorderFees" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.PaymentSerialLog" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.PaymentType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.PosPayment" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.PosPaymentReconciliation" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.PosPaymentLog" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.PosPaymentFileLog" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.Refund" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.UnionPayment" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+						<region name="com.qding.common.payment.model.UnionPaymentLog" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+										
+				                    
+                                        
+			<region name="getCashPaymentIdsByStatusAndReport" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentIdsByPaymentTypeId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentIdByGorderCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentIdByGorderCodeAndPaymentTypeId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getCashPaymentApplicationIdsByApplicantsAndTypeAndStatus" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentApplicationIdsByType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentApplicationIdsByApplicants" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentApplicationIdsByReceiverAndStatusAndType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentApplicationIdsByReceiver" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentApplicationIdsByStatus" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getCashPaymentLogIdsByCashPaymentId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentLogIdsByStatus" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getCashPaymentReconciliationIdsByStatusAndType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentReconciliationIdByGorderCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCashPaymentReconciliationIdsByType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getCommissionsIdsByGorderCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getCommissionsIdByGorderCodeAndType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getGorderFeesIdByGorderCodeAndType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getGorderFeesIdsByTypeAndStatus" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getGorderFeesIdsByPaymentTypeIdAndTypeAndStatus" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getPaymentSerialLogIdsByGorderCodeAndTrantype" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getPaymentSerialLogIdsByPaymentTypeId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getPaymentSerialLogIdsByGorderCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getPaymentTypeIdsByType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getPosPaymentIdsByGorderCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getPosPaymentIdByGorderCodeAndQdCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getPosPaymentReconciliationIdByGorderCodeAndQdCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getPosPaymentReconciliationIdsByGorderCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getPosPaymentLogIdsByPosPaymentId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getPosPaymentFileLogIdsByType" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getRefundIdsByGorderCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getRefundIdByGorderCodeAndGoodsId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getUnionPaymentIdsByGorderCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                                    
+                                        
+			<region name="getUnionPaymentIdByGorderCodeAndQdCode" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+							
+				                    
+                                        
+			<region name="getUnionPaymentLogIdsByUnionPaymentId" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                            
+                		
+		
+					
+			
+			
+			
+		
+		
+	
+
+
+	</regions>
+</root>
+

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0" xmlns:scallop="http://scallop/xmlns/sca/1.0"
+           targetNamespace="http://sns.sohu.com/home/composite" xmlns:sample="http://sns.sohu.com/home/composite" name="HomeComposite">
+	
+
+
+
+
+    	
+	
+	 <!-- CommonPaymentComponent -->
+	 
+	     <component name = "CashPaymentServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.CashPaymentSCAClient"/>
+    	   
+    	<reference name = "cashPaymentService">
+    		<scallop:binding.rmi registryName = "cashPayment-common-payment-service-rmi" serviceName="CashPaymentRMIService"/>
+    	</reference>
+    </component >
+        <component name = "CashPaymentApplicationServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.CashPaymentApplicationSCAClient"/>
+    	   
+    	<reference name = "cashPaymentApplicationService">
+    		<scallop:binding.rmi registryName = "cashPaymentApplication-common-payment-service-rmi" serviceName="CashPaymentApplicationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "CashPaymentLogServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.CashPaymentLogSCAClient"/>
+    	   
+    	<reference name = "cashPaymentLogService">
+    		<scallop:binding.rmi registryName = "cashPaymentLog-common-payment-service-rmi" serviceName="CashPaymentLogRMIService"/>
+    	</reference>
+    </component >
+        <component name = "CashPaymentReconciliationServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.CashPaymentReconciliationSCAClient"/>
+    	   
+    	<reference name = "cashPaymentReconciliationService">
+    		<scallop:binding.rmi registryName = "cashPaymentReconciliation-common-payment-service-rmi" serviceName="CashPaymentReconciliationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "CommissionsServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.CommissionsSCAClient"/>
+    	   
+    	<reference name = "commissionsService">
+    		<scallop:binding.rmi registryName = "commissions-common-payment-service-rmi" serviceName="CommissionsRMIService"/>
+    	</reference>
+    </component >
+        <component name = "GorderFeesServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.GorderFeesSCAClient"/>
+    	   
+    	<reference name = "gorderFeesService">
+    		<scallop:binding.rmi registryName = "gorderFees-common-payment-service-rmi" serviceName="GorderFeesRMIService"/>
+    	</reference>
+    </component >
+        <component name = "PaymentSerialLogServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.PaymentSerialLogSCAClient"/>
+    	   
+    	<reference name = "paymentSerialLogService">
+    		<scallop:binding.rmi registryName = "paymentSerialLog-common-payment-service-rmi" serviceName="PaymentSerialLogRMIService"/>
+    	</reference>
+    </component >
+        <component name = "PaymentTypeServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.PaymentTypeSCAClient"/>
+    	   
+    	<reference name = "paymentTypeService">
+    		<scallop:binding.rmi registryName = "paymentType-common-payment-service-rmi" serviceName="PaymentTypeRMIService"/>
+    	</reference>
+    </component >
+        <component name = "PosPaymentServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.PosPaymentSCAClient"/>
+    	   
+    	<reference name = "posPaymentService">
+    		<scallop:binding.rmi registryName = "posPayment-common-payment-service-rmi" serviceName="PosPaymentRMIService"/>
+    	</reference>
+    </component >
+        <component name = "PosPaymentReconciliationServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.PosPaymentReconciliationSCAClient"/>
+    	   
+    	<reference name = "posPaymentReconciliationService">
+    		<scallop:binding.rmi registryName = "posPaymentReconciliation-common-payment-service-rmi" serviceName="PosPaymentReconciliationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "PosPaymentLogServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.PosPaymentLogSCAClient"/>
+    	   
+    	<reference name = "posPaymentLogService">
+    		<scallop:binding.rmi registryName = "posPaymentLog-common-payment-service-rmi" serviceName="PosPaymentLogRMIService"/>
+    	</reference>
+    </component >
+        <component name = "PosPaymentFileLogServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.PosPaymentFileLogSCAClient"/>
+    	   
+    	<reference name = "posPaymentFileLogService">
+    		<scallop:binding.rmi registryName = "posPaymentFileLog-common-payment-service-rmi" serviceName="PosPaymentFileLogRMIService"/>
+    	</reference>
+    </component >
+        <component name = "RefundServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.RefundSCAClient"/>
+    	   
+    	<reference name = "refundService">
+    		<scallop:binding.rmi registryName = "refund-common-payment-service-rmi" serviceName="RefundRMIService"/>
+    	</reference>
+    </component >
+        <component name = "UnionPaymentServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.UnionPaymentSCAClient"/>
+    	   
+    	<reference name = "unionPaymentService">
+    		<scallop:binding.rmi registryName = "unionPayment-common-payment-service-rmi" serviceName="UnionPaymentRMIService"/>
+    	</reference>
+    </component >
+        <component name = "UnionPaymentLogServiceComponent">
+    	<implementation.java class = "com.qding.sca.common.payment.client.UnionPaymentLogSCAClient"/>
+    	   
+    	<reference name = "unionPaymentLogService">
+    		<scallop:binding.rmi registryName = "unionPaymentLog-common-payment-service-rmi" serviceName="UnionPaymentLogRMIService"/>
+    	</reference>
+    </component >
+    	
+	
+</composite>
+

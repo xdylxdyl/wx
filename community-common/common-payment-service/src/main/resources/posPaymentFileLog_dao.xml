@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.PosPaymentFileLog"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getPosPaymentFileLogIdsByType"
+				sqlitem="select id from pos_payment_file_log where type  = ?"
+				keyProperty="type" valueProperty="id" keyColumn="type" />
+						
+			
+						
+			
+					<list name="getPosPaymentFileLogIdsAll" sqlitem="select id from pos_payment_file_log where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

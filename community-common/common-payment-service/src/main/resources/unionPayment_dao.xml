@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.UnionPayment"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getUnionPaymentIdsByGorderCode"
+				sqlitem="select id from union_payment where gorder_code  = ?"
+				keyProperty="gorderCode" valueProperty="id" keyColumn="gorder_code" />
+						
+			
+					<map name="getUnionPaymentIdByGorderCodeAndQdCode"
+				sqlitem="select id from union_payment where gorder_code  = ? and qd_code = ?"
+				keyProperty="gorderCode,qdCode" valueProperty="id" keyColumn="gorder_code,qd_code" />
+						
+			
+					<list name="getUnionPaymentIdsAll" sqlitem="select id from union_payment where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

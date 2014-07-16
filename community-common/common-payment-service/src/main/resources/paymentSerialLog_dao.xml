@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.PaymentSerialLog"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getPaymentSerialLogIdsByGorderCodeAndTrantype"
+				sqlitem="select id from payment_serial_log where gorder_code  = ? and trantype = ?"
+				keyProperty="gorderCode,trantype" valueProperty="id" keyColumn="gorder_code,trantype" />
+					<list name="getPaymentSerialLogIdsByPaymentTypeId"
+				sqlitem="select id from payment_serial_log where payment_type_id = ?"
+				keyProperty="paymentTypeId" valueProperty="id" keyColumn="payment_type_id" />
+					<list name="getPaymentSerialLogIdsByGorderCode"
+				sqlitem="select id from payment_serial_log where gorder_code  = ?"
+				keyProperty="gorderCode" valueProperty="id" keyColumn="gorder_code" />
+						
+			
+						
+			
+					<list name="getPaymentSerialLogIdsAll" sqlitem="select id from payment_serial_log where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

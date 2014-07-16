@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.payment.model.GorderFees"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getGorderFeesIdsByTypeAndStatus"
+				sqlitem="select id from gorder_fees where type  = ? and status = ?"
+				keyProperty="type,status" valueProperty="id" keyColumn="type,status" />
+					<list name="getGorderFeesIdsByPaymentTypeIdAndTypeAndStatus"
+				sqlitem="select id from gorder_fees where payment_type_id = ? and type = ? and status = ?"
+				keyProperty="paymentTypeId,type,status" valueProperty="id" keyColumn="payment_type_id,type,status" />
+						
+			
+					<map name="getGorderFeesIdByGorderCodeAndType"
+				sqlitem="select id from gorder_fees where gorder_code  = ? and type = ?"
+				keyProperty="gorderCode,type" valueProperty="id" keyColumn="gorder_code,type" />
+						
+			
+					<list name="getGorderFeesIdsAll" sqlitem="select id from gorder_fees where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_payment" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>
