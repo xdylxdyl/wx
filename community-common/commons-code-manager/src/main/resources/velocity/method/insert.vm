@@ -1,0 +1,24 @@
+
+    log.info(" insert data : " + $cm.uncapitalize($cm.modelClass));
+
+		if ($cm.uncapitalize($cm.modelClass) == null) {
+			return null;
+		}
+
+		long currentTimeMillis = System.currentTimeMillis();
+		${cm.uncapitalize($cm.modelClass)}.setCreateAt(currentTimeMillis);
+		${cm.uncapitalize($cm.modelClass)}.setUpdateAt(currentTimeMillis);
+
+		Long result = null;
+		try {
+			result = (Long) dao.save($cm.uncapitalize($cm.modelClass));
+		} catch (DaoException e) {
+			log.error(" insert wrong : " + $cm.uncapitalize($cm.modelClass));
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+    
+		log.info(" insert data success : " + result);
+    
+return result;

@@ -1,0 +1,14 @@
+-- ----------------------------
+-- Table structure for `$cm.table`
+-- ----------------------------
+-- DROP TABLE IF EXISTS `$cm.table`;
+CREATE TABLE `$cm.table` (
+  #foreach( $field in $cm.fields)
+  `$field.dname` $field.dtype $field.columnNull  #if($field.dname=="id") AUTO_INCREMENT #end,  
+  #end 
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+
+
+

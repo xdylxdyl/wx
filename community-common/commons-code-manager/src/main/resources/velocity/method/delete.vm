@@ -1,0 +1,22 @@
+  
+	    log.info(" delete data : " + id);
+ 
+		boolean result = false;
+
+		if (id == null) {
+			return true;
+		}
+
+		try {
+			result = dao.delete(${cm.modelClass}.class, id);
+		} catch (DaoException e) {
+			log.error(" delete wrong : " + id);
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+ 
+		log.info(" delete data success : " + id);
+   
+		return result;
+	

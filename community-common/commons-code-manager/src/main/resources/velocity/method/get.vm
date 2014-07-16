@@ -1,0 +1,21 @@
+    
+        log.info(" get data : " + id);
+      
+		$cm.modelClass $cm.uncapitalize($cm.modelClass) = null;
+
+		if (id == null) {
+			return $cm.uncapitalize($cm.modelClass);
+		}
+
+		try {
+			$cm.uncapitalize($cm.modelClass) = ($cm.modelClass) dao.get(${cm.modelClass}.class, id);
+		} catch (DaoException e) {
+			log.error(" get wrong : " + id);
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+     
+		log.info(" get data success : " + id);
+      
+		return $cm.uncapitalize($cm.modelClass);	

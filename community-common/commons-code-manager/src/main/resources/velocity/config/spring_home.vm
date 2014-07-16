@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+	
+	<context:annotation-config />
+    <context:component-scan base-package="com.gemantic"/>  
+	
+	
+	<bean id="scaClient"
+		class="com.gemantic.common.sca.service.SCAClientBean">
+		<property name="resource" value="client.composite" />
+	</bean>
+	
+	
+	<!-- ============================================================ -->
+	<!-- ==                    $project.component                       == -->
+	<!-- ============================================================ -->
+	
+	 #foreach($mold in $project.molds)
+
+	
+	
+	<!-- $mold.interfaceClass  -->
+
+	
+	<bean id="${mold.uncapitalize($mold.interfaceClass)}"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="${mold.interfaceClass}Component" />
+		<property name="className"
+			value="${mold.interfacePackage}.$mold.interfaceClass" />
+	</bean>
+
+	
+	#end
+	
+	
+	
+	
+	<!-- performance -->
+	
+	 <aop:aspectj-autoproxy />
+        <bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume"/>
+        <aop:config>
+            <aop:aspect ref="aroundLoggingTime">
+                <aop:pointcut id="publicServiceMethod" expression="execution(* com.gemantic..service.*.*(..)) &amp;&amp; (!execution(* com.gemantic.common.sca.service.*.*(..)))" />
+                <aop:around method="around" pointcut-ref="publicServiceMethod"/>
+            </aop:aspect>
+        </aop:config>
+</beans>

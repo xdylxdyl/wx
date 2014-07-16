@@ -1,0 +1,125 @@
+/**
+ * 
+ */
+package $cm.clientPackage;
+
+import java.util.List;
+import java.util.Map;
+
+import ${cm.modelPackage}.${cm.modelClass};
+import ${cm.interfacePackage}.${cm.interfaceClass};
+import com.gemantic.common.exception.ServiceDaoException;
+import com.gemantic.common.exception.ServiceException;
+
+public class ${cm.clientClass} implements ${cm.interfaceClass} {
+
+    private ${cm.interfaceClass} ${cm.uncapitalize($cm.interfaceClass)};
+
+	public ${cm.interfaceClass} get${cm.interfaceClass}() {
+		return ${cm.uncapitalize($cm.interfaceClass)};
+	}
+	
+	
+	public void set${cm.interfaceClass}(${cm.interfaceClass} ${cm.uncapitalize($cm.interfaceClass)}) {
+		this.${cm.uncapitalize($cm.interfaceClass)} =${cm.uncapitalize($cm.interfaceClass)};
+	}
+	
+	
+		#foreach($method in $cm.defaultMethods)
+	   
+		@Override
+		public $method.returnField.ctype ${method.name}(${method.methodParam()})throws ServiceException, ServiceDaoException{
+		
+		return ${cm.uncapitalize($cm.interfaceClass)}.${method.name}(${method.daoParam()});
+		          
+		
+		}	
+		  
+    #end
+	
+	
+	
+	
+	
+	#foreach($method_entry in $cm.sql_method.entrySet())
+		
+			
+		/**
+	 * 
+	 * @param 
+	 * @return 
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	 @Override
+	public $method_entry.value.returnField.ctype  ${method_entry.value.name}(${method_entry.value.methodParam()})throws ServiceException, ServiceDaoException{
+		
+		return ${cm.uncapitalize($cm.interfaceClass)}.${method_entry.value.name}(${method_entry.value.daoParamForListMethod()});
+	
+	
+	}
+	
+	#end
+	
+	
+	
+    	#foreach($method_entry in $cm.count_method.entrySet())
+		
+			
+		/**
+	 * 
+	 * @param 
+	 * @return 
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	 @Override
+	public Integer  ${method_entry.value.name}(${method_entry.value.methodParam()})throws ServiceException, ServiceDaoException{
+		
+		return ${cm.uncapitalize($cm.interfaceClass)}.${method_entry.value.name}(${method_entry.value.daoParamForListMethod()});
+	
+	
+	}
+	
+	#end
+	
+	
+		@Override
+	public List<Long> get${cm.modelClass}Ids(Integer start, Integer limit)
+			throws ServiceException, ServiceDaoException {
+		// TODO Auto-generated method stub
+		return ${cm.uncapitalize($cm.modelClass)}Service.get${cm.modelClass}Ids(start, limit);
+	}
+
+	@Override
+	public Integer count${cm.modelClass}Ids() throws ServiceException, ServiceDaoException {
+		// TODO Auto-generated method stub
+		return ${cm.uncapitalize($cm.modelClass)}Service.count${cm.modelClass}Ids();
+	}
+	
+	
+	@Override
+	public List<Long> getIdsByDynamicCondition(Class clz, Map<String, Object> conditions, Integer start, Integer limit)
+			throws ServiceException, ServiceDaoException {
+		// TODO Auto-generated method stub
+		return ${cm.uncapitalize($cm.modelClass)}Service.getIdsByDynamicCondition(clz, conditions, start, limit);
+	}
+
+
+	@Override
+	public boolean fakeDelete(Class clz, Long id) throws ServiceException, ServiceDaoException {
+		// TODO Auto-generated method stub
+		return ${cm.uncapitalize($cm.modelClass)}Service.fakeDelete(clz, id);
+	}
+	
+	
+	
+	@Override
+	public void deleteList(Class clz, List<Long> ids) throws ServiceException, ServiceDaoException {
+		   ${cm.uncapitalize($cm.modelClass)}Service.deleteList(clz, ids);
+		
+	}
+
+
+ 
+}

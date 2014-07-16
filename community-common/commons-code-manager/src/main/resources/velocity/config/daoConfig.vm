@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<list>
+		
+			#foreach($mold in $project.molds)
+	
+		
+		<config>
+			<path>${mold.uncapitalize($mold.modelClass)}_dao.xml</path>
+		</config>
+			#end
+			
+		
+		
+	</list>
+
+	<default>
+		<dbStrategy name=""
+			clasz="com.gemantic.dal.route.strategy.DefaultStrategy">
+			<pattern value="[0-9]$" group="g1" />
+		</dbStrategy>
+		<listenerClass className="" />
+		<idCenterDS ds="idCenterDS" />
+	</default>
+</dal>                

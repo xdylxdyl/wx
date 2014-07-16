@@ -1,0 +1,21 @@
+	  
+	    log.info(" get lists : " + (ids == null ? "null" : ids));
+     
+		List<$cm.modelClass> $cm.uncapitalize($cm.modelClass) = null;
+
+		if (CollectionUtils.isEmpty(ids)) {
+			return new ArrayList<$cm.modelClass>();
+		}
+
+		try {
+			$cm.uncapitalize($cm.modelClass) = (List<$cm.modelClass>) dao.getList(${cm.modelClass}.class, ids);
+		} catch (DaoException e) {
+			log.error(" get wrong : " + ids);
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+    
+		log.info(" get data success : " + ($cm.uncapitalize($cm.modelClass) == null ? "null" : ${cm.uncapitalize($cm.modelClass)}.size()));
+    
+		return $cm.uncapitalize($cm.modelClass);

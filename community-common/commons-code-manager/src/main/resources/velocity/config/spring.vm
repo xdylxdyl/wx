@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="$project.packageHome" />
+
+	
+	#foreach($mold in $project.molds)	
+	<sca:service name="${mold.uncapitalize($mold.interfaceClass)}"
+		type="${mold.interfacePackage}.$mold.interfaceClass" target="${mold.uncapitalize($mold.interfaceClass)}" />
+		
+	
+	#end
+	
+	
+	 #parse( "velocity/config/spring_reference.vm" )
+
+
+	
+
+
+
+	
+	#foreach($mold in $project.molds)
+	
+	<bean id="${mold.uncapitalize($mold.interfaceClass)}"
+		class="${mold.implPackage}.$mold.implClass" parent="baseDaoService">
+
+	</bean>
+	#end
+	
+
+<bean id="dao" class="com.gemantic.dal.dao.impl.CompositeDaoImpl" />
+
+	<bean id="baseDaoService"
+		class="com.qding.common.dao.base.service.impl.BaseDaoServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+
+
+
+
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.gemantic..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>

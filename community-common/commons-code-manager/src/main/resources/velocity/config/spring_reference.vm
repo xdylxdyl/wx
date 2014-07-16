@@ -1,0 +1,8 @@
+
+	
+	#foreach($reference in $project.references)
+		
+		<sca:reference name="${reference.name}"		type="${reference.interfaceName}" />
+	
+	#end
+

@@ -1,0 +1,25 @@
+log.info(" update lists : " + (${cm.uncapitalize($cm.modelClass)}List == null ? "null" : ${cm.uncapitalize($cm.modelClass)}List.size()));
+
+		boolean result = false;
+
+		if (CollectionUtils.isEmpty(${cm.uncapitalize($cm.modelClass)}List)) {
+			return true;
+		}
+
+		long currentTimeMillis = System.currentTimeMillis();
+		for ($cm.modelClass $cm.uncapitalize($cm.modelClass) : ${cm.uncapitalize($cm.modelClass)}List) {
+			${cm.uncapitalize($cm.modelClass)}.setUpdateAt(currentTimeMillis);
+		}
+
+		try {
+			result = dao.batchUpdate(${cm.uncapitalize($cm.modelClass)}List);
+		} catch (DaoException e) {
+			log.error(" update list wrong : " + ${cm.uncapitalize($cm.modelClass)}List);
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+     
+		log.info(" update lists success : " + ${cm.uncapitalize($cm.modelClass)}List.size());
+         
+		return result;

@@ -1,0 +1,170 @@
+package ${cm.testPackage};
+
+import java.util.List;
+import java.util.ArrayList;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.Ignore;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.Before;
+import java.rmi.Naming;
+
+import ${cm.modelPackage}.${cm.modelClass};
+import ${cm.interfacePackage}.${cm.interfaceClass};
+
+import com.gemantic.common.exception.ServiceDaoException;
+import com.gemantic.common.exception.ServiceException;
+@Ignore
+public class ${cm.testClass} {
+
+	private static final Log log = LogFactory.getLog(${cm.testClass}.class);
+	
+	private ${cm.interfaceClass} ${cm.uncapitalize($cm.interfaceClass)};
+	
+	
+	//@Before
+	    public void setUp() throws Exception{
+		
+		
+		    //dao
+	        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:META-INF/${project.artifactID}/applicationContext-server.xml");
+	        ${cm.uncapitalize($cm.interfaceClass)} = (${cm.interfaceClass}) context.getBean("${cm.uncapitalize($cm.interfaceClass)}");
+			//local server
+			/**
+			${cm.uncapitalize($cm.interfaceClass)} = (${cm.interfaceClass})  Naming.lookup("//localhost:${cm.port}/${cm.service}");
+			**/
+			
+			/** test client
+			ApplicationContext context = new ClassPathXmlApplicationContext("classpath:META-INF/spring/applicationContext-sca.xml");
+	    	 ${cm.uncapitalize($cm.interfaceClass)} = (${cm.interfaceClass}) context.getBean("${cm.uncapitalize($cm.interfaceClass)}");
+			
+			**/
+			
+			
+			
+	    }
+	
+	
+		
+		
+		
+	
+
+		
+	//@Test
+	public void testCRUD() throws ServiceException, ServiceDaoException{
+	
+	 // 1.增加
+	 
+	  #set( $no = "" )
+	  #set( $valueIndex = 0 )
+	  #parse( "velocity/test/mockObject.vm" )
+	 
+	 
+	  Long id= this.${cm.uncapitalize($cm.interfaceClass)}.insert($cm.uncapitalize("$cm.modelClass"));
+
+      ${cm.uncapitalize("$cm.modelClass")} = this.${cm.uncapitalize($cm.interfaceClass)}.getObjectById(id);
+
+	  $cm.modelClass $cm.uncapitalize("$cm.modelClass")2=this.${cm.uncapitalize($cm.interfaceClass)}.getObjectById(id);
+	    Assert.assertNotNull($cm.uncapitalize("$cm.modelClass")2);
+	  
+		// 2. 更改 
+		#foreach($field in $cm.fields)
+		 #if("id"==$field.cname||"createAt"==$field.cname||"updateAt"==$field.cname)
+		 #else	
+			#if($field.values.size() > 1)
+	   ${cm.uncapitalize("$cm.modelClass")}.set$cm.capitalize($field.cname)($field.values.get(1));
+		    #end
+		 #end
+		#end
+		boolean success=this.${cm.uncapitalize($cm.interfaceClass)}.update($cm.uncapitalize("$cm.modelClass"));		
+		Assert.assertEquals(true, success);
+		 $cm.modelClass $cm.uncapitalize("$cm.modelClass")3=this.${cm.uncapitalize($cm.interfaceClass)}.getObjectById(id);
+		#foreach($field in $cm.fields)
+		 #if("id"==$field.cname||"createAt"==$field.cname||"updateAt"==$field.cname)
+		 #else	
+            #if ($field.valuse.size())
+			#if(0==$field.valuse.size())
+			#else
+				Assert.assertEquals(new ${field.ctype}(${field.values.get(1)}), $cm.uncapitalize("$cm.modelClass")3.get$cm.capitalize($field.cname)());	  
+            #end
+            #end
+		 #end
+		#end
+		//3.删除
+		boolean successDelete=this.${cm.uncapitalize($cm.interfaceClass)}.delete(id);	
+		Assert.assertEquals(true, success);
+		$cm.modelClass $cm.uncapitalize("$cm.modelClass")4=this.${cm.uncapitalize($cm.interfaceClass)}.getObjectById(id);
+		Assert.assertNull($cm.uncapitalize("$cm.modelClass")4);
+		
+		//4.batchInsert
+		 List<$cm.modelClass> list=new ArrayList<$cm.modelClass>();
+	  #set( $no = "5" )
+	   #set( $valueIndex = 0 )
+	  #parse( "velocity/test/mockObject.vm" )
+	    list.add($cm.uncapitalize("$cm.modelClass")5);	   
+	  #set( $no = "6" )
+	   #set( $valueIndex = 1 )
+	  #parse( "velocity/test/mockObject.vm" )
+	   list.add($cm.uncapitalize("$cm.modelClass")6);
+	   List<$cm.modelClass> insertResults= this.${cm.uncapitalize($cm.interfaceClass)}.insertList(list);
+	   Assert.assertEquals(2,insertResults.size());	
+	   //5.batchGet
+	   List<Long> ids=new ArrayList<Long>();
+		for($cm.modelClass o: insertResults){
+		   ids.add(o.getId());
+		}
+				
+	    List<$cm.modelClass> getResults= this.${cm.uncapitalize($cm.interfaceClass)}.getObjectsByIds(ids);
+		Assert.assertEquals(2,getResults.size());
+		
+		
+		 #parse( "velocity/test/deleteList.vm" )
+		
+		//6.batchUpdate
+	   
+		}
+	
+	
+	
+	#foreach($method_entry in $cm.sql_method.entrySet())
+		
+		
+	//@Test
+	public void  ${method_entry.value.name}()throws ServiceException, ServiceDaoException{
+	 List<$cm.modelClass> list=new ArrayList<$cm.modelClass>();
+	  #set( $no = "1" )
+	   #set( $valueIndex = 0 )
+	  #parse( "velocity/test/mockObject.vm" )
+	  list.add($cm.uncapitalize("$cm.modelClass")1);	
+	  #set( $no = "2" )
+	   #set( $valueIndex = 1 )
+	  #parse( "velocity/test/mockObject.vm" )
+	  list.add($cm.uncapitalize("$cm.modelClass")2);	  
+	  List<$cm.modelClass> insertResults= this.${cm.uncapitalize($cm.interfaceClass)}.insertList(list);
+		
+	
+	   
+		
+	
+		$method_entry.value.returnField.ctype  lists= ${cm.uncapitalize($cm.interfaceClass)}.${method_entry.value.name}(${cm.mockMethodValue($method_entry.value,0)});
+		//TODO 增加自己的验证逻辑
+		Assert.assertNotNull(lists);		
+		
+		 #parse( "velocity/test/deleteList.vm" )
+	 
+		};
+
+	
+	#end
+	
+		@Test
+	public void  testNULL()throws ServiceException, ServiceDaoException{
+		
+		
+		
+		};
+}

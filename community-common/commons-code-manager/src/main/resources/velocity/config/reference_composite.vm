@@ -1,0 +1,12 @@
+
+  
+	#foreach($reference in $project.references)	
+		
+		<reference name="${reference.name}" promote="${project.component}/${reference.name}">
+    <interface.java interface="${reference.interfaceName}" />
+      <scallop:binding.rmi registryName="${reference.registryName}" serviceName="${reference.serviceName}" />
+  </reference>
+		
+	#end
+
+

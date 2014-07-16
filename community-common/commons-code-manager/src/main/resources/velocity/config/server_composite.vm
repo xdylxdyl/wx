@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://${project.component}" xmlns:sample="http://${project.component}" name="${project.component}">
+
+
+  <component name="${project.component}">
+    <implementation.spring location="META-INF/$project.artifactID/applicationContext-server.xml" />
+  </component>
+  
+	#foreach($mold in $project.molds)	
+  <service name="${mold.uncapitalize($mold.interfaceClass)}" promote="${project.component}/${mold.uncapitalize($mold.interfaceClass)}">
+    <interface.java interface="${mold.interfacePackage}.$mold.interfaceClass"/> 
+    <scallop:binding.rmi host="localhost" port="$mold.port" serviceName="$mold.service"/>     
+  </service>
+	#end
+
+	
+	 #parse( "velocity/config/reference_composite.vm" )
+
+</composite>

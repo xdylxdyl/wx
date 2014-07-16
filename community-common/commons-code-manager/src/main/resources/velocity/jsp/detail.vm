@@ -1,0 +1,62 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="../../../includes/includes.jsp"%>
+    <input type="hidden" value="${cm.uncapitalize($cm.modelClass)}" id="current_nav">
+	<div id="${cm.uncapitalize($cm.modelClass)}DetailApp" ng-app="${cm.uncapitalize($cm.modelClass)}DetailApp">
+		<div ng-controller="${cm.uncapitalize($cm.modelClass)}DetailController">
+			
+			<div class="portlet">
+			    <div class="portlet-title">
+			        <div class="caption"><i class="fa fa-cogs"></i>
+						#set( $temp = '${id > 0}' )
+					  	<c:choose>
+					   		<c:when test="$temp">编辑</c:when> 
+					   	    <c:otherwise>新增</c:otherwise>
+				   	    </c:choose>		
+					</div>
+			    </div>
+		
+		
+			    <form class="form-horizontal" role="form" name="${cm.uncapitalize($cm.modelClass)}Form">
+			   	 	
+				  
+				 #foreach( $field in $cm.fields)
+				 
+				 #if("id"==$field.cname)
+				      <input type="hidden" name="id" id="${cm.uncapitalize($cm.modelClass)}Id" ng-model="${cm.uncapitalize($cm.modelClass)}.id" ng-bind="${cm.uncapitalize($cm.modelClass)}.id" value="${id}">
+			      #else
+			       #if("createAt"==$field.cname||"updateAt"==$field.cname)
+				     
+				     
+				    
+			        #else
+	           
+	                <div class="form-group">
+			        <label for="${field.cname}" class="col-sm-2 control-label">${field.comment}</label>
+			        <div class="col-sm-6">
+			          <input type="text" class="form-control" name="${field.cname}" ng-model="${cm.uncapitalize($cm.modelClass)}.${field.cname}" ng-bind="${cm.uncapitalize($cm.modelClass)}.${field.cname}" placeholder="请输入${field.comment}" required>
+			        </div>
+			        </div>
+	           
+		   
+	               #end
+			      
+				  #end
+				  
+				    
+				 
+				
+		   
+	            #end
+					  <div class="form-group">
+			        <div class="col-sm-offset-2 col-sm-10">
+			          <button class="btn btn-primary col-sm-2" type="submit" ng-click="update${cm.modelClass}(${cm.uncapitalize($cm.modelClass)})">保存</button>
+			          <a class="btn btn-primary col-sm-2 col-sm-offset-2" ng-href="/web/c/${cm.uncapitalize($cm.modelClass)}">取消</a>
+			        </div>
+			      </div>
+			     
+			    </form>
+			 </div>
+		 </div>
+	 </div>
+	 
+	 <script src="/r/js-src/web/${project.artifactID}/${cm.uncapitalize($cm.modelClass)}/${cm.uncapitalize($cm.modelClass)}Detail.js"></script>

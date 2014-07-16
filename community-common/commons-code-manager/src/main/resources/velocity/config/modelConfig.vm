@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="${config.mold.modelPackage}.${config.mold.modelClass}"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+			#foreach($method in $config.listMethods)
+		<list name="$method.name"
+				sqlitem="$method.replaceSqlGtLt($method.sql)"
+				keyProperty="$method.daoNoPageSizeParam()" valueProperty="$method.returnField.cname" keyColumn="$method.daoNoPageSizeDBParam()" />
+			#end
+			
+			
+			#foreach($method in $config.mapMethods)
+		<map name="$method.name"
+				sqlitem="$method.replaceSqlGtLt($method.sql)"
+				keyProperty="$method.daoParam()" valueProperty="$method.returnField.cname" keyColumn="$method.daoNoPageSizeDBParam()" />
+			#end
+			
+			
+					<list name="get${config.mold.modelClass}IdsAll" sqlitem="select id from ${config.mold.table} where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="$project.dbName" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

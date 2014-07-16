@@ -1,0 +1,23 @@
+      if(log.isInfoEnabled()){
+      log.info(" count ${method_entry.value.returnField.cname}s by $method_entry.value.daoParamForListMethod()  : " + $method_entry.value.methodLog() );
+	  }
+	 	Integer count=null;
+        
+       
+
+	try {
+	   
+		count = dao.count("${cm.sql_method.get($method_entry.key).name}", new Object[] { $method_entry.value.daoNoPageSizeParamForListMethod()});
+
+   
+   } catch (DaoException e) {
+			log.error(" count ${method_entry.value.returnField.cname}s  wrong by $method_entry.value.daoParamForListMethod())  : " + $method_entry.value.methodLog() );
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+  if(log.isInfoEnabled()){
+    log.info(" count  success : " + count);
+  }
+		return count;
+		

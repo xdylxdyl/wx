@@ -1,0 +1,305 @@
+package ${project.packageHome}.controller;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import ${cm.modelPackage}.${cm.modelClass};
+import ${cm.interfacePackage}.${cm.interfaceClass};
+
+/**
+ * ${cm.modelClass}  crud
+ * 
+ * @author magenm
+ * @Date 2014-4-16 13:43
+ * 
+ */
+@Controller
+public class ${cm.modelClass}Controller {
+	private static final Log log = LogFactory.getLog(${cm.modelClass}Controller.class);
+
+	@Autowired
+	private ${cm.modelClass}Service ${cm.uncapitalize($cm.modelClass)}Service;
+
+
+
+
+
+
+    /**
+	 * 
+	 * @param
+	 * @return
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+
+	@RequestMapping(value = "/web/c/${cm.uncapitalize($cm.modelClass)}", method = RequestMethod.GET)
+	public String get${cm.uncapitalize($cm.modelClass)}List(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model) throws Exception {
+
+		
+		
+		log.info("/web/${cm.uncapitalize($cm.modelClass)}  to /${cm.uncapitalize($cm.modelClass)}/view/${cm.uncapitalize($cm.modelClass)}List");
+
+		return "/$project.artifactID/${cm.uncapitalize($cm.modelClass)}/view/${cm.uncapitalize($cm.modelClass)}List";
+	}
+    
+    
+
+    #foreach($method_entry in $cm.count_method.entrySet())
+		
+			
+		/**
+	 * 
+	 * @param 
+	 * @return 
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	 
+	
+		 @RequestMapping(value = "/web/c/${cm.uncapitalize($cm.modelClass)}$velocityCount ", method = RequestMethod.GET)
+	public String ${cm.sql_method.get($method_entry.key).name}List$velocityCount(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,${method_entry.value.methodNoPageSizeParam()}) throws Exception {
+
+		log.info("/web/${cm.uncapitalize($cm.modelClass)}  to /${cm.uncapitalize($cm.modelClass)}/view/${cm.uncapitalize($cm.modelClass)}List");
+
+		return "/$project.artifactID/${cm.uncapitalize($cm.modelClass)}/view/${cm.uncapitalize($cm.modelClass)}List";
+	}
+
+	
+	
+	
+	
+	#end
+
+	
+	@RequestMapping(value = "/web/c/${cm.uncapitalize($cm.modelClass)}/{id}", method = RequestMethod.GET)
+	public String get${cm.modelClass}(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, @PathVariable Long id)
+			throws Exception {
+
+		log.info("/web/${cm.uncapitalize($cm.modelClass)}/" + id + "  to /${cm.uncapitalize($cm.modelClass)}/view/${cm.uncapitalize($cm.modelClass)}Deail");
+		if(null != id){
+			model.addAttribute("id", id);
+		}else{
+			model.addAttribute("id", 0);
+		}
+
+		return "/$project.artifactID/${cm.uncapitalize($cm.modelClass)}/view/${cm.uncapitalize($cm.modelClass)}Detail";
+	}
+	
+	
+	
+	    #foreach($method_entry in $cm.count_method.entrySet())
+		
+			
+    /**
+	 * 
+	 * @param 
+	 * @return 
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	
+		@RequestMapping(value = "/web/a/${cm.uncapitalize($cm.modelClass)}$velocityCount ", method = RequestMethod.GET)
+	public String ${cm.sql_method.get($method_entry.key).name}JsonList(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, Integer page,
+			Integer size,${method_entry.value.methodNoPageSizeParam()}) throws Exception {
+
+
+		if (page == null) {
+			page = 1;
+		}
+		if (size == null) {
+			size = 10;
+		}
+		int start = (page - 1) * size;
+		if (start < 0) {
+			start = 0;
+		}
+
+		log.info("pageList : page= " + start + " , size=" + size);
+
+		try {
+
+			${cm.sql_method.get($method_entry.key).returnField.ctype} ids= ${cm.uncapitalize($cm.interfaceClass)}.${cm.sql_method.get($method_entry.key).name}(${cm.sql_method.get($method_entry.key).daoNoPageSizeParam()},start,size);
+		log.info("get ${method_entry.value.name} size is " + ids.size());
+
+			List<${cm.modelClass}> ${cm.uncapitalize($cm.modelClass)}List = ${cm.uncapitalize($cm.modelClass)}Service.getObjectsByIds(ids);
+			log.info("get ${cm.uncapitalize($cm.modelClass)} data is " + ${cm.uncapitalize($cm.modelClass)}List.size());
+
+			Integer total = ${cm.uncapitalize($cm.modelClass)}Service. ${cm.count_method.get($method_entry.key).name}(${cm.count_method.get($method_entry.key).daoNoPageSizeParam()});
+			log.info("get ${cm.uncapitalize($cm.modelClass)} count is " + total);
+
+			model.addAttribute("code", 0);
+			model.addAttribute("page", page);
+			model.addAttribute("size", size);
+			
+			model.addAttribute("total", total);
+
+			model.addAttribute("${cm.uncapitalize($cm.modelClass)}List", ${cm.uncapitalize($cm.modelClass)}List);
+
+		} catch (Throwable t) {
+		    t.printStackTrace();
+			log.error(t.getMessage());
+			log.error("get ${cm.uncapitalize($cm.modelClass)} list error,page is  " + start + " , size "
+					+ size);
+			// for test
+			model.addAttribute("code", -100000);
+		}
+
+		return "/$project.artifactID/${cm.uncapitalize($cm.modelClass)}/json/${cm.uncapitalize($cm.modelClass)}ListJson";
+	}
+
+	
+	
+		
+	#end
+
+	
+
+	@RequestMapping(value = "/web/a/${cm.uncapitalize($cm.modelClass)}/{id}", method = RequestMethod.GET)
+	public String get${cm.modelClass}Json(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, @PathVariable Long id)
+			throws Exception {
+
+		log.info("get data : id= " + id);
+		try {
+			${cm.modelClass} ${cm.uncapitalize($cm.modelClass)} = ${cm.uncapitalize($cm.modelClass)}Service.getObjectById(id);
+			log.info("get ${cm.uncapitalize($cm.modelClass)} data is " + ${cm.uncapitalize($cm.modelClass)});
+
+			model.addAttribute("code", 0);
+
+			model.addAttribute("${cm.uncapitalize($cm.modelClass)}", ${cm.uncapitalize($cm.modelClass)});
+
+		} catch (Throwable t) {
+		    t.printStackTrace();
+			log.error(t.getMessage());
+			log.error("get ${cm.uncapitalize($cm.modelClass)} error,id is  " + id);
+			model.addAttribute("code", -100000);
+		}
+
+		return "/$project.artifactID/${cm.uncapitalize($cm.modelClass)}/json/${cm.uncapitalize($cm.modelClass)}DetailJson";
+	}
+
+	@RequestMapping(value = "/web/a/${cm.uncapitalize($cm.modelClass)}/{id}", method = RequestMethod.PUT)
+	public String update${cm.modelClass}Json(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, ${cm.modelClass} ${cm.uncapitalize($cm.modelClass)}) throws Exception {
+		
+		log.info("update ${cm.uncapitalize($cm.modelClass)} : ${cm.uncapitalize($cm.modelClass)}= " + ${cm.uncapitalize($cm.modelClass)});
+		
+		try {
+			
+			${cm.uncapitalize($cm.modelClass)}Service.update(${cm.uncapitalize($cm.modelClass)});
+
+			model.addAttribute("code", 0);
+
+			model.addAttribute("${cm.uncapitalize($cm.modelClass)}", ${cm.uncapitalize($cm.modelClass)});
+
+		} catch (Throwable t) {
+		    t.printStackTrace();
+			log.error(t.getMessage());
+			log.error("update ${cm.uncapitalize($cm.modelClass)} error,id is  " + ${cm.uncapitalize($cm.modelClass)}.getId());
+			model.addAttribute("code", -6003);
+
+		}
+
+		return "/data/json";
+	}
+
+	@RequestMapping(value = "/web/a/${cm.uncapitalize($cm.modelClass)}", method = RequestMethod.POST)
+	public String add${cm.modelClass}Json(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, ${cm.modelClass} ${cm.uncapitalize($cm.modelClass)}) throws Exception {
+		
+		log.info("update ${cm.uncapitalize($cm.modelClass)} : ${cm.uncapitalize($cm.modelClass)}= " + ${cm.uncapitalize($cm.modelClass)});
+		
+		try { 
+			${cm.uncapitalize($cm.modelClass)}.setId(null);
+
+			${cm.uncapitalize($cm.modelClass)}Service.insert(${cm.uncapitalize($cm.modelClass)});
+
+			model.addAttribute("code", 0);
+		} catch (Throwable t) {
+		    t.printStackTrace();
+			log.error(t.getMessage());
+			log.error("add ${cm.uncapitalize($cm.modelClass)} error ");
+			model.addAttribute("code", -6002);
+		}
+
+		return "/data/json";
+	}
+
+	@RequestMapping(value = "/web/a/${cm.uncapitalize($cm.modelClass)}/{id}", method = RequestMethod.DELETE)
+	public String delete${cm.modelClass}Json(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, @PathVariable Long id)
+			throws Exception {
+
+		log.info("delete ${cm.uncapitalize($cm.modelClass)} : id= " + id);
+		try {
+			${cm.uncapitalize($cm.modelClass)}Service.delete(id);
+
+			log.info("add ${cm.uncapitalize($cm.modelClass)} success");
+			model.addAttribute("code", 0);
+
+		} catch (Throwable t) {
+		    t.printStackTrace();
+			log.error(t.getMessage());
+			log.error("delete ${cm.uncapitalize($cm.modelClass)} error,id is  " + id);
+			model.addAttribute("code", -6004);
+
+		}
+
+		return "/data/json";
+	}
+	
+	
+	@RequestMapping(value = "/web/a/multi/${cm.uncapitalize($cm.modelClass)}", method = RequestMethod.GET)
+	public String getMulti${cm.modelClass}Json(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, Long[] ids)
+			throws Exception {
+			
+		List<Long> idList = new ArrayList();	
+	   if (ids == null) {
+
+		} else {
+			idList = Arrays.asList(ids);
+		}
+		try {
+
+			
+
+			List<$cm.modelClass> ${cm.uncapitalize($cm.modelClass)}List = ${cm.uncapitalize($cm.modelClass)}Service.getObjectsByIds(idList);
+			log.info("get  ${cm.uncapitalize($cm.modelClass)} data is " + ${cm.uncapitalize($cm.modelClass)}List);
+
+			model.addAttribute("code", 0);			
+			model.addAttribute("total",${cm.uncapitalize($cm.modelClass)}List.size());
+
+			model.addAttribute("${cm.uncapitalize($cm.modelClass)}List", ${cm.uncapitalize($cm.modelClass)}List);
+
+		} catch (Throwable t) {
+			log.error(t.getMessage());
+			log.error("get ${cm.uncapitalize($cm.modelClass)} error,id is  " + idList);
+			model.addAttribute("code", -100000);
+		}
+
+		return "/$project.artifactID/${cm.uncapitalize($cm.modelClass)}/json/${cm.uncapitalize($cm.modelClass)}ListJson";
+	}
+	
+	
+}

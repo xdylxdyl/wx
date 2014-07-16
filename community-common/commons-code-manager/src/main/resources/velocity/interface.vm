@@ -1,0 +1,78 @@
+package $cm.interfacePackage;
+
+import java.util.List;
+import java.util.Map;
+
+import org.osoa.sca.annotations.Remotable;
+
+import ${cm.modelPackage}.${cm.modelClass};
+import com.gemantic.common.exception.ServiceDaoException;
+import com.gemantic.common.exception.ServiceException;
+import com.qding.common.dao.base.service.BaseDaoService;
+
+@Remotable
+public interface $cm.interfaceClass extends BaseDaoService {
+
+	
+
+
+
+   	#foreach($method in $cm.defaultMethods)
+	   
+		
+		public $method.returnField.ctype ${method.name}(${method.methodParam()})throws ServiceException, ServiceDaoException;
+		  
+    #end
+	
+	
+
+
+	#foreach($method_entry in $cm.count_method.entrySet())
+		
+			
+	/**
+	 * 
+	 * @param 
+	 * @return 
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	public Integer  ${method_entry.value.name}(${method_entry.value.methodParam()})throws ServiceException, ServiceDaoException;
+	#end
+		#foreach($method_entry in $cm.sql_method.entrySet())
+		
+			
+	/**
+	 * 
+	 * @param 
+	 * @return 
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	public $method_entry.value.returnField.ctype  ${method_entry.value.name}(${method_entry.value.methodParam()})throws ServiceException, ServiceDaoException;
+	#end
+	
+	
+	
+	
+	/**
+	 * 
+	 * @param
+	 * @return
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	public List<Long> get${cm.modelClass}Ids(Integer start, Integer limit)
+			throws ServiceException, ServiceDaoException;
+
+	/**
+	 * 
+	 * @param
+	 * @return
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	public Integer count${cm.modelClass}Ids() throws ServiceException, ServiceDaoException;
+	
+
+}

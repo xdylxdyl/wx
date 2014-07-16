@@ -1,0 +1,49 @@
+
+
+var ${cm.uncapitalize($cm.modelClass)}Module=angular.module("${cm.uncapitalize($cm.modelClass)}App",[]);
+${cm.uncapitalize($cm.modelClass)}Module.controller('${cm.uncapitalize($cm.modelClass)}Controller', function ($scope, $http) {
+  
+    
+    $scope.${cm.uncapitalize($cm.modelClass)} = {};
+    
+    //page
+	page($scope, $http);
+    
+ 
+    $scope.add${cm.modelClass} = function(${cm.uncapitalize($cm.modelClass)}){
+    	$scope.${cm.uncapitalize($cm.modelClass)} = ${cm.uncapitalize($cm.modelClass)};
+    	console.log(${cm.uncapitalize($cm.modelClass)});
+    	location.href = '/web/c/${cm.uncapitalize($cm.modelClass)}/0';
+    };
+    $scope.update${cm.modelClass} = function(id){
+    	
+    	console.log("want edit "+id);
+    	location.href = '/web/c/${cm.uncapitalize($cm.modelClass)}/'+id;
+    };
+    
+
+    
+    $scope.delete${cm.modelClass} = function(id){
+    	    
+       bootbox.confirm({title:"提示",message:"确定删除？", callback:function(confirm){
+	    		if (confirm) {
+			 $http({ method : 'DELETE' , url :'/web/a/${cm.uncapitalize($cm.modelClass)}/' + id}).success(function( data , status ){
+    		 if( status == '200'){
+    			bootbox.alert(data.message,function(){
+            		if(data.code == 0){
+            			getData($http,$scope,$scope.params,$scope.getDataSuccess);
+            		}
+            	});
+    		  }
+    	    });
+	    		}
+    		}
+    	});
+    };
+});
+
+
+pageDirective(${cm.uncapitalize($cm.modelClass)}Module);
+angular.bootstrap(document.getElementById("${cm.uncapitalize($cm.modelClass)}App"),['${cm.uncapitalize($cm.modelClass)}App']);
+
+

@@ -1,0 +1,8 @@
+
+		
+			#foreach($mold in $project.molds)			
+	        
+	        INSERT INTO `module`(name,menu_id,url,parent_id,type)  VALUES ('$mold.uncapitalize($mold.modelClass)', '$mold.uncapitalize($mold.modelClass)', '/web/c/$mold.uncapitalize($mold.modelClass)', '0', 'web');
+	
+			#end
+		

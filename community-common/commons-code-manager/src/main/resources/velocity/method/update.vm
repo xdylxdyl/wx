@@ -1,0 +1,23 @@
+
+	log.info(" update data : " + ($cm.uncapitalize($cm.modelClass) == null ? "null" : ${cm.uncapitalize($cm.modelClass)}.getId()));
+
+		boolean result = false;
+
+		if ($cm.uncapitalize($cm.modelClass) == null) {
+			return true;
+		}
+
+		${cm.uncapitalize($cm.modelClass)}.setUpdateAt(System.currentTimeMillis());
+
+		try {
+			result = dao.update($cm.uncapitalize($cm.modelClass));
+		} catch (DaoException e) {
+			log.error(" update wrong : " + $cm.uncapitalize($cm.modelClass));
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+       if(log.isInfoEnabled()){
+		log.info(" update data success : " + $cm.uncapitalize($cm.modelClass));
+       }
+		return result;

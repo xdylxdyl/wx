@@ -1,0 +1,11 @@
+$cm.modelClass $cm.uncapitalize("$cm.modelClass")$no  = new ${cm.modelClass}();	   
+	   #foreach($field in $cm.fields)		
+		#if("id"==$field.cname||"createAt"==$field.cname||"updateAt"==$field.cname)
+			 
+		#else
+			#if($field.values.size() - 1 >= $valueIndex)
+                ${cm.uncapitalize("$cm.modelClass")}${no}.set$cm.capitalize($field.cname)($field.values.get($valueIndex));
+            #end
+
+		#end
+	   #end

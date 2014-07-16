@@ -1,0 +1,43 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="../../../includes/includes.jsp"%>
+
+<input type="hidden" value="${cm.uncapitalize($cm.modelClass)}" id="current_nav">
+<div id="${cm.uncapitalize($cm.modelClass)}App" ng-app="${cm.uncapitalize($cm.modelClass)}App">
+	<div ng-controller="${cm.uncapitalize($cm.modelClass)}Controller">
+
+		<div class="portlet">
+		    <div class="portlet-title">
+		        <div class="caption"><i class="fa fa-cogs"></i>${cm.modelClass}管理</div>
+		    </div>
+		    <span class="btn green fileinput-button">
+		        <i class="fa fa-plus"></i>
+		        <span ng-click="add${cm.modelClass}(${cm.uncapitalize($cm.modelClass)})">新增</span>
+		    </span>
+	
+			<paging url="/web/a/${cm.uncapitalize($cm.modelClass)}">
+				<table class="table table-striped table-bordered table-hover">
+					<tr>
+						#foreach( $field in $cm.fields)
+			                    <td>${field.comment}</td>
+			        	#end
+						<th>操作</th>
+					</tr>
+					<tr ng-repeat="${cm.uncapitalize($cm.modelClass)} in data">				
+						#foreach( $field in $cm.fields)
+			                    <td ng-bind="${cm.uncapitalize($cm.modelClass)}.${field.cname}" ></td>
+			        	#end
+							
+						<td>
+							<input type="button" value="修改" ng-click="update${cm.modelClass}(${cm.uncapitalize($cm.modelClass)}.id)" /> 
+							<input type="button" value="删除" ng-click="delete${cm.modelClass}(${cm.uncapitalize($cm.modelClass)}.id)" />
+						</td>
+					</tr>
+				</table>		
+			</paging>
+	
+		</div>
+	</div>
+</div>
+
+<!-- Angular JS -->
+<script src="/r/js-src/web/${project.artifactID}/${cm.uncapitalize($cm.modelClass)}/${cm.uncapitalize($cm.modelClass)}List.js"></script>

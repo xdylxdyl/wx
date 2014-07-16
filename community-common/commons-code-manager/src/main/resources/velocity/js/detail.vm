@@ -1,0 +1,62 @@
+
+
+var ${cm.uncapitalize($cm.modelClass)}DetailModule=angular.module("${cm.uncapitalize($cm.modelClass)}DetailApp",[]);
+${cm.uncapitalize($cm.modelClass)}DetailModule.controller('${cm.uncapitalize($cm.modelClass)}DetailController', function ($scope, $http) {
+	 $scope.${cm.uncapitalize($cm.modelClass)} = {};
+	 var id = $("#${cm.uncapitalize($cm.modelClass)}Id").val();
+	 // 编辑是获取数据
+	 if(id > 0){
+		 $http({method : 'GET' , url:'/web/a/${cm.uncapitalize($cm.modelClass)}/'+id}).success(function( data , status ){
+				if( status == '200'){
+					 $scope.${cm.uncapitalize($cm.modelClass)} = data.data;
+		             $scope.numPages = Math.ceil(data.total / data.size);
+				}
+			});
+	 }
+	  
+	 //处理后台收不到数据的问题
+	 $http.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
+	 $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+	
+	 $scope.update${cm.modelClass} = function(${cm.uncapitalize($cm.modelClass)}){
+	 		
+	 		if ($scope.${cm.uncapitalize($cm.modelClass)}Form.$invalid) {
+    			$scope.${cm.uncapitalize($cm.modelClass)}Form.submitted = true;
+	    	} else {
+	 
+		    	console.log(${cm.uncapitalize($cm.modelClass)});
+		    	$scope.${cm.uncapitalize($cm.modelClass)}  = ${cm.uncapitalize($cm.modelClass)};
+		    	$scope.${cm.uncapitalize($cm.modelClass)}.id = $("#${cm.uncapitalize($cm.modelClass)}Id").val();
+		    	//add
+		    	if($scope.${cm.uncapitalize($cm.modelClass)}.id == 0){
+		    		console.log('add');
+			    	 $http({method : 'POST' , url:'/web/a/${cm.uncapitalize($cm.modelClass)}',data:formData($scope.${cm.uncapitalize($cm.modelClass)})}).success(function( data , status ){
+							if( status == '200'){
+								bootbox.alert(data.message,function(){
+				            		if(data.code == 0){
+				            			location.href = "/web/c/${cm.uncapitalize($cm.modelClass)}";
+				            		}
+				            	});
+							}
+						});
+			    //update 
+		    	}else {
+		    		console.log('update');
+		    		$http({method : 'PUT' , url:'/web/a/${cm.uncapitalize($cm.modelClass)}/'+$scope.${cm.uncapitalize($cm.modelClass)}.id,data:formData($scope.${cm.uncapitalize($cm.modelClass)})}).success(function( data , status ){
+						if( status == '200'){
+							location.href = "/web/c/${cm.uncapitalize($cm.modelClass)}";
+						}
+					});
+		    	}
+		    }
+	    };
+});
+
+ function formData(data){
+	  #set( $temp = '$.param(data)' )
+		    return $temp;
+	 }
+
+angular.bootstrap(document.getElementById("${cm.uncapitalize($cm.modelClass)}DetailApp"),['${cm.uncapitalize($cm.modelClass)}DetailApp']);
+
+

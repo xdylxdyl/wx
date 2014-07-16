@@ -1,0 +1,145 @@
+package $cm.implPackage;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+
+import org.osoa.sca.annotations.Remotable;
+
+import ${cm.modelPackage}.${cm.modelClass};
+import ${cm.interfacePackage}.${cm.interfaceClass};
+
+
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+
+import com.gemantic.common.exception.ServiceDaoException;
+import com.gemantic.common.exception.ServiceException;
+import com.gemantic.dal.dao.Dao;
+import com.gemantic.dal.dao.exception.DaoException;
+import com.qding.common.dao.base.service.impl.BaseDaoServiceImpl;
+
+
+public class $cm.implClass extends BaseDaoServiceImpl implements $cm.interfaceClass {
+
+ 
+
+	private static final Log log = LogFactory.getLog(${cm.implClass}.class);
+
+
+
+	#foreach($method in $cm.defaultMethods)
+	   
+		@Override
+		public $method.returnField.ctype ${method.name}(${method.methodParam()})throws ServiceException, ServiceDaoException{
+		
+	
+		          #parse( "${method.pimpl}" )
+	
+		}	
+		  
+    #end
+	
+		
+	
+	
+	#foreach($method_entry in $cm.sql_method.entrySet())
+		
+			
+		/**
+	 * 
+	 * @param 
+	 * @return 
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	 @Override
+	public $method_entry.value.returnField.ctype  ${method_entry.value.name}(${method_entry.value.methodParam()})throws ServiceException, ServiceDaoException{
+		
+		 #parse( "$method_entry.value.pimpl" )
+	
+	
+	}
+	
+	#end
+	
+	
+	#foreach($method_entry in $cm.count_method.entrySet())
+		
+			
+		/**
+	 * 
+	 * @param 
+	 * @return 
+	 * @throws ServiceException
+	 * @throws ServiceDaoException
+	 */
+	 @Override
+	public Integer  ${method_entry.value.name}(${method_entry.value.methodParam()})throws ServiceException, ServiceDaoException{
+		
+		 #parse( "${method_entry.value.pimpl}" )
+	
+	
+	}
+	
+	#end
+	
+	
+	
+	
+		
+	@Override
+	public List<Long> get${cm.modelClass}Ids(Integer start, Integer limit)
+			throws ServiceException, ServiceDaoException {
+		
+		log.info(" get ids   by start,limit  ================== " + start + " , " + limit);
+		List<Long> idList = null;
+		
+		
+		
+		if (start == null) {
+			start = 0;
+		}
+
+		if (limit == null) {
+			limit = Integer.MAX_VALUE;
+		}
+		
+		try {
+			idList = dao.getIdList("get${cm.modelClass}IdsAll",new Object[] {},start, limit, false);
+		} catch (DaoException e) {
+			log.error(" get ids  wrong by start,limit)  : " + start + " , " + limit);
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+		if (log.isInfoEnabled()) {
+			log.info(" get ids success == : " + (idList == null ? "null" : idList.size()));
+		}
+		return idList;
+	}
+	
+	
+		@Override
+	public Integer count${cm.modelClass}Ids() throws ServiceException,
+			ServiceDaoException {
+		Integer count =  0;
+		try {
+			count = dao.count("get${cm.modelClass}IdsAll",new Object[] {});
+		} catch (DaoException e) {
+			log.error(" count by get${cm.modelClass}Ids " ) ;
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+		if (log.isInfoEnabled()) {
+			log.info(" count  : " + count);
+		}
+		return count;
+	}
+
+}

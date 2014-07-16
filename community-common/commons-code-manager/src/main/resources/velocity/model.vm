@@ -1,0 +1,74 @@
+package $cm.modelPackage;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+
+@Entity
+@Table(name = "$cm.table")
+public class $cm.modelClass implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = ${cm.serialID}L;	
+	
+	#foreach( $constant in $cm.constants)
+	
+	/**
+	 *  $constant.comment
+	 * 
+	 */
+	public static final $constant.type $constant.name = $constant.value;
+    #end
+	
+   #foreach( $field in $cm.fields)
+	 
+    private  $field.ctype $field.cname;
+	
+  #end
+
+	
+	#foreach( $field in $cm.fields)
+	 #if("id"==$field.cname)
+	
+         #if($cm.autoID)
+	 	   @Id
+     	   @GeneratedValue(strategy = GenerationType.AUTO)
+         #else
+	 	   @Id
+	 	   @GeneratedValue(generator = "$cm.seq")
+	 	   @GenericGenerator(name = "$cm.seq", strategy = "com.gemantic.dal.id.util.IdGenerator",
+	 	   parameters = { @Parameter(name = "sequence", value = "$cm.seq") })
+	     #end
+     #end
+	@Column(name = "$field.dname")
+	public $field.ctype get$cm.capitalize($field.cname)() {
+		return $field.cname;
+	}
+	
+	
+	public void set$cm.capitalize($field.cname)($field.ctype $field.cname) {
+		this.$field.cname = $field.cname;
+	}
+	#end
+	
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this,
+				ToStringStyle.MULTI_LINE_STYLE);
+	}
+
+}

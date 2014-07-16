@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<cache>
+		<datasource
+			name="default"
+			timeout="300"
+			port="11211"
+			server="$project.cacheDNS"
+			maxActive="18" 
+			maxIdle="18" 
+			maxWait="-1" 
+		/>
+	</cache>
+	<regions>
+		
+			#foreach($mold in $project.molds)
+			<region name="${mold.modelPackage}.$mold.modelClass" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+			#end
+			#foreach($mold in $project.molds)
+				
+				#foreach($entry in $mold.sql_method.entrySet())
+                    
+                    #if($mold.needCache($entry.key))
+                    
+			<region name="$entry.value.name" listenerClass="com.gemantic.dal.cache.listener.DefaultListenerImpl" strategyClass="com.gemantic.memcached.route.strategy.DefaultStrategy">
+			<keyPattern value="[0-9]$" datasource ="default"/>
+		</region>
+		
+                    #end
+        
+                #end
+		
+		
+			#end
+		
+			
+			
+			
+		
+		
+	
+
+
+	</regions>
+</root>

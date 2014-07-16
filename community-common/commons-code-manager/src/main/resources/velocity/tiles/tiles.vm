@@ -1,0 +1,10 @@
+
+		
+			#foreach($mold in $project.molds)
+			<definition name="/$project.artifactID/$mold.uncapitalize($mold.modelClass)/view/*" extends="root">
+		    <put-attribute name="right" value="/WEB-INF/pages/{0}.jsp" />
+		      <put-attribute name="title" value="地址" type="string" />
+	        </definition>
+	
+			#end
+		

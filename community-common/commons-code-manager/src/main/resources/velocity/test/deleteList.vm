@@ -1,0 +1,4 @@
+for($cm.modelClass o :insertResults){
+			this.${cm.uncapitalize($cm.interfaceClass)}.delete(o.getId());
+}
+	

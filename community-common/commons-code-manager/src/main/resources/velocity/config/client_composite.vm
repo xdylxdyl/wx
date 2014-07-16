@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0" xmlns:scallop="http://scallop/xmlns/sca/1.0"
+           targetNamespace="http://sns.sohu.com/home/composite" xmlns:sample="http://sns.sohu.com/home/composite" name="HomeComposite">
+	
+
+
+
+
+    	
+	
+	 <!-- $project.component -->
+	 
+	 #foreach($mold in $project.molds)
+    <component name = "${mold.interfaceClass}Component">
+    	<implementation.java class = "${mold.clientPackage}.$mold.clientClass"/>
+    	   
+    	<reference name = "${mold.uncapitalize($mold.interfaceClass)}">
+    		<scallop:binding.rmi registryName = "$mold.registryName" serviceName="$mold.service"/>
+    	</reference>
+    </component >
+    #end
+	
+	
+</composite>

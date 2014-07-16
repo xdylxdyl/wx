@@ -1,0 +1,7 @@
+
+use resources;
+insert into resources(name,resource) values('$cm.registryName','$hostName:$cm.port');
+
+
+
+

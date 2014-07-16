@@ -1,0 +1,25 @@
+     if(log.isInfoEnabled()){
+	  log.info(" get $method_entry.value.returnField.cname by $method_entry.value.daoParam()  : " + $method_entry.value.methodLog() );
+	  }
+	  $method_entry.value.returnField.ctype $method_entry.value.returnField.cname = null;
+	
+      // TODO 参数检查!
+      
+	try {
+		
+	
+	
+        $method_entry.value.returnField.cname = (${method_entry.value.returnField.ctype}) dao.getMapping("${method_entry.value.name}", new Object[] {$method_entry.value.daoParam() });
+   } catch (DaoException e) {
+			log.error(" get $method_entry.value.returnField.cname wrong by $method_entry.value.daoParam()  : " + $method_entry.value.methodLog() );
+			log.error(e);
+			e.printStackTrace();
+			throw new ServiceDaoException(e);
+		}
+  if(log.isInfoEnabled()){
+   log.info(" get $method_entry.value.returnField.cname success : " + $method_entry.value.returnField.cname);
+   }
+		return $method_entry.value.returnField.cname;
+        
+	
+	
