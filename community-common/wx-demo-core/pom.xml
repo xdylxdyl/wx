@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>qding-community</groupId>
+		<artifactId>community-common</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>wx-demo-core</artifactId>
+	<version>0.0.6</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.gemantic.commons</groupId>
+			<artifactId>commons-core</artifactId>
+			<version>1.88</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.tuscany.sca</groupId>
+			<artifactId>tuscany-sca-api</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>ejb3-persistence</artifactId>
+			<version>1.0.2.GA</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.3.2.GA</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-collections</artifactId>
+					<groupId>commons-collections</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>3.3.2.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.4.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.4.0.GA</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.gemantic</groupId>
+			<artifactId>commons-code-manager</artifactId>
+			<version>1.10-SNAPSHOT</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>qding-community</groupId>
+			<artifactId>common-dao-lib</artifactId>
+			<version>0.0.5</version>
+		</dependency>
+
+
+
+
+
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<tagBase>svn://115.29.48.8/trunk/qiandingwx/tag/wx-demo-core</tagBase>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
