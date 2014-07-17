@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.common.queue.model.RetryQueue"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getRetryQueueIdsByType"
+				sqlitem="select id from retry_queue where  type = ?"
+				keyProperty="type" valueProperty="id" keyColumn="type" />
+						
+			
+						
+			
+					<list name="getRetryQueueIdsAll" sqlitem="select id from retry_queue where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="common_queue" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>
