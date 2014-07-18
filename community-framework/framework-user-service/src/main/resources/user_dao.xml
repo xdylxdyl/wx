@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.user.model.User"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+						
+			
+					<map name="getUserIdByMobile"
+				sqlitem="select id from user where mobile = ?"
+				keyProperty="mobile" valueProperty="id" keyColumn="mobile" />
+						
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_user" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

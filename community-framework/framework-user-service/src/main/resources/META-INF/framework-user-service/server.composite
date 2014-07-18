@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://FrameworkUserComponent" xmlns:sample="http://FrameworkUserComponent" name="FrameworkUserComponent">
+
+
+  <component name="FrameworkUserComponent">
+    <implementation.spring location="META-INF/framework-user-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="potentialService" promote="FrameworkUserComponent/potentialService">
+    <interface.java interface="com.qding.framework.user.service.PotentialService"/> 
+    <scallop:binding.rmi host="localhost" port="9011" serviceName="PotentialRMIService"/>     
+  </service>
+	  <service name="userService" promote="FrameworkUserComponent/userService">
+    <interface.java interface="com.qding.framework.user.service.UserService"/> 
+    <scallop:binding.rmi host="localhost" port="9011" serviceName="UserRMIService"/>     
+  </service>
+	  <service name="userOpenRelationService" promote="FrameworkUserComponent/userOpenRelationService">
+    <interface.java interface="com.qding.framework.user.service.UserOpenRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9011" serviceName="UserOpenRelationRMIService"/>     
+  </service>
+	
+	
+	 
+  
+	
+
+
+</composite>
+

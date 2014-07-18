@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.framework.user" />
+
+
+	<sca:service name="potentialService"
+		type="com.qding.framework.user.service.PotentialService" target="potentialService" />
+
+
+	<sca:service name="userService"
+		type="com.qding.framework.user.service.UserService" target="userService" />
+
+
+	<sca:service name="userOpenRelationService"
+		type="com.qding.framework.user.service.UserOpenRelationService"
+		target="userOpenRelationService" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<bean id="potentialService"
+		class="com.qding.framework.user.service.impl.PotentialServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="userService" class="com.qding.framework.user.service.impl.UserServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="userOpenRelationService"
+		class="com.qding.framework.user.service.impl.UserOpenRelationServiceImpl"
+		parent="baseDaoService">
+
+
+	</bean>
+
+
+	<bean id="dao" class="com.gemantic.dal.dao.impl.CompositeDaoImpl" />
+
+	<bean id="baseDaoService"
+		class="com.qding.common.dao.base.service.impl.BaseDaoServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+
+
+
+
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.qding..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
+

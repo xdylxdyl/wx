@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.user.model.Potential"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getPotentialIdsByFakeID"
+				sqlitem="select id from potential where  fake_id = ?"
+				keyProperty="fakeID" valueProperty="id" keyColumn="fake_id" />
+						
+			
+					<map name="getPotentialIdByOpenID"
+				sqlitem="select id from potential  where  open_id = ?"
+				keyProperty="openID" valueProperty="id" keyColumn="open_id" />
+						
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_user" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

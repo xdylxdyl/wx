@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.user.model.UserOpenRelation"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+						
+			
+					<map name="getUserOpenRelationOpenIDByUidAndPublicsID"
+				sqlitem="select open_id from user_open_relation where uid = ? and  publics_id = ?"
+				keyProperty="uid,publicsID" valueProperty="openID" keyColumn="uid,publics_id" />
+					<map name="getUserOpenRelationUidByOpenIDAndType"
+				sqlitem="select uid from user_open_relation where open_id = ? and  type = ?"
+				keyProperty="openID,type" valueProperty="uid" keyColumn="open_id,type" />
+						
+			
+					<list name="getUserOpenRelationIdsAll" sqlitem="select id from user_open_relation where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_user" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<list>
+		
+				
+		
+		<config>
+			<path>potential_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>user_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>userOpenRelation_dao.xml</path>
+		</config>
+					
+	</list>
+
+	<default>
+		<dbStrategy name=""
+			clasz="com.gemantic.dal.route.strategy.DefaultStrategy">
+			<pattern value="[0-9]$" group="g1" />
+		</dbStrategy>
+		<listenerClass className="" />
+		<idCenterDS ds="idCenterDS" />
+	</default>
+</dal>                
