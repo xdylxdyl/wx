@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.gemantic" />
+
+
+	<bean id="scaClient" class="com.gemantic.common.sca.service.SCAClientBean">
+		<property name="resource" value="client.composite" />
+	</bean>
+
+
+	<!-- ============================================================ -->
+	<!-- == FrameworkPublicsComponent == -->
+	<!-- ============================================================ -->
+
+
+	<!-- ChatMessageService -->
+
+
+	<bean id="chatMessageService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="ChatMessageServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.ChatMessageService" />
+	</bean>
+
+	<!-- PublicsService -->
+
+
+	<bean id="publicsService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PublicsServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.PublicsService" />
+	</bean>
+
+
+
+
+
+	<!-- RuleService -->
+
+
+	<bean id="ruleService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="RuleServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.RuleService" />
+	</bean>
+
+
+
+
+
+	<!-- RuleKeywordsRelationService -->
+
+
+	<bean id="ruleKeywordsRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="RuleKeywordsRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.RuleKeywordsRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- MessageService -->
+
+
+	<bean id="messageService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="MessageServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.MessageService" />
+	</bean>
+
+
+
+
+
+	<!-- MultiMessageRelationService -->
+
+
+	<bean id="multiMessageRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="MultiMessageRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.MultiMessageRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- QrService -->
+
+
+	<bean id="qrService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="QrServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.QrService" />
+	</bean>
+
+
+
+
+
+	<!-- MenuService -->
+
+
+	<bean id="menuService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="MenuServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.MenuService" />
+	</bean>
+
+
+
+
+
+	<!-- ProjectService -->
+
+
+	<bean id="projectService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="ProjectServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.ProjectService" />
+	</bean>
+
+
+
+
+
+	<!-- PaddressService -->
+
+
+	<bean id="paddressService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PaddressServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.PaddressService" />
+	</bean>
+
+
+
+
+
+	<!-- AddressProjectRelationService -->
+
+
+	<bean id="addressProjectRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="AddressProjectRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.AddressProjectRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- PublicsProjectRelationService -->
+
+
+	<bean id="publicsProjectRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PublicsProjectRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.publics.service.PublicsProjectRelationService" />
+	</bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- PotentialService -->
+
+
+	<bean id="potentialService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PotentialServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.user.service.PotentialService" />
+	</bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- UserService -->
+
+
+	<bean id="userService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="UserServiceComponent" />
+		<property name="className" value="com.qding.framework.user.service.UserService" />
+	</bean>
+
+
+
+
+
+	<!-- UserOpenRelationService -->
+
+
+	<bean id="userOpenRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="UserOpenRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.user.service.UserOpenRelationService" />
+	</bean>
+
+
+
+
+	<!-- SmsService -->
+
+
+	<bean id="smsService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="SmsServiceComponent" />
+		<property name="className" value="com.qding.common.sms.service.SmsService" />
+	</bean>
+
+	<!-- SendSmsService -->
+
+
+	<bean id="sendSmsService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="SendSmsServiceComponent" />
+		<property name="className" value="com.qding.common.sms.service.SendSmsService" />
+	</bean>
+
+	<!-- PayOrderService -->
+
+
+	<bean id="payOrderService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="PayOrderServiceComponent" />
+		<property name="className" value="com.qding.common.pay.service.PayOrderService" />
+	</bean>
+
+
+
+	<!-- NewsService -->
+
+
+	<bean id="newsPublicsRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="NewsPublicsRelationComponent" />
+		<property name="className"
+			value="com.qding.app.news.service.NewsPublicsRelationService" />
+	</bean>
+	<bean id="newsService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="NewsServiceComponent" />
+		<property name="className" value="com.qding.app.news.service.NewsService" />
+	</bean>
+
+
+
+
+	<!-- ============================================================ -->
+	<!-- == AppGoodsComponent == -->
+	<!-- ============================================================ -->
+
+
+
+
+	<!-- ProviderService -->
+
+
+	<bean id="providerService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="ProviderServiceComponent" />
+		<property name="className" value="com.qding.app.goods.service.ProviderService" />
+	</bean>
+
+
+
+
+
+	<!-- ProviderPublicsRelationService -->
+
+
+	<bean id="providerPublicsRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="ProviderPublicsRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.goods.service.ProviderPublicsRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- CategoryService -->
+
+
+	<bean id="categoryService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="CategoryServiceComponent" />
+		<property name="className" value="com.qding.app.goods.service.CategoryService" />
+	</bean>
+
+
+
+
+
+	<!-- GoodsPublicsRelationService -->
+
+
+	<bean id="goodsPublicsRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="GoodsPublicsRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.goods.service.GoodsPublicsRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- GoodsService -->
+
+
+	<bean id="goodsService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="GoodsServiceComponent" />
+		<property name="className" value="com.qding.app.goods.service.GoodsService" />
+	</bean>
+
+
+
+
+
+	<!-- TagsService -->
+
+
+	<bean id="tagsService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="TagsServiceComponent" />
+		<property name="className" value="com.qding.app.goods.service.TagsService" />
+	</bean>
+
+
+
+
+
+	<!-- TagsPublicsRelationService -->
+
+
+	<bean id="tagsPublicsRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="TagsPublicsRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.goods.service.TagsPublicsRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- TagsGoodsRelationService -->
+
+
+	<bean id="tagsGoodsRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="TagsGoodsRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.goods.service.TagsGoodsRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- AddressService -->
+
+
+	<bean id="addressService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="AddressServiceComponent" />
+		<property name="className" value="com.qding.app.goods.service.AddressService" />
+	</bean>
+
+
+
+
+
+	<!-- AddressUserRelationService -->
+
+
+	<bean id="addressUserRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="AddressUserRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.goods.service.AddressUserRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- GorderService -->
+
+
+	<bean id="gorderService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="GorderServiceComponent" />
+		<property name="className" value="com.qding.app.goods.service.GorderService" />
+	</bean>
+
+
+
+
+
+	<!-- GorderGoodsRelationService -->
+
+
+	<bean id="gorderGoodsRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="GorderGoodsRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.goods.service.GorderGoodsRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- CartService -->
+
+
+	<bean id="cartService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="CartServiceComponent" />
+		<property name="className" value="com.qding.app.goods.service.CartService" />
+	</bean>
+
+
+
+
+
+	<!-- CartGoodsRelationService -->
+
+
+	<bean id="cartGoodsRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="CartGoodsRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.goods.service.CartGoodsRelationService" />
+	</bean>
+
+
+
+	<!-- ============================================================ -->
+	<!-- == AppDecorateComponent == -->
+	<!-- ============================================================ -->
+
+
+
+
+	<!-- DecorateService -->
+
+
+	<bean id="decorateService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateService" />
+	</bean>
+
+
+
+
+
+	<!-- DecorateImagesRelationService -->
+
+
+	<bean id="decorateImagesRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateImagesRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateImagesRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- DecoratePaymentService -->
+
+
+	<bean id="decoratePaymentService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecoratePaymentServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecoratePaymentService" />
+	</bean>
+
+
+
+
+
+	<!-- DecorateVenderService -->
+
+
+	<bean id="decorateVenderService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateVenderServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateVenderService" />
+	</bean>
+
+
+
+
+
+	<!-- DecorateVenderUserService -->
+
+
+	<bean id="decorateVenderUserService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateVenderUserServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateVenderUserService" />
+	</bean>
+
+
+
+	<!-- DecorateLogService -->
+
+
+	<bean id="decorateLogService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="DecorateLogServiceComponent" />
+		<property name="className"
+			value="com.qding.app.decorate.service.DecorateLogService" />
+	</bean>
+
+
+
+
+
+
+	<!-- ImagesService -->
+
+
+	<bean id="imagesService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="ImagesServiceComponent" />
+		<property name="className" value="com.qding.app.decorate.service.ImagesService" />
+	</bean>
+
+	<!-- ============================================================ -->
+	<!-- == FrameworkBuildingComponent == -->
+	<!-- ============================================================ -->
+
+
+
+
+	<!-- OwnerService -->
+
+
+	<bean id="ownerService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="OwnerServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.building.service.OwnerService" />
+	</bean>
+
+
+
+
+
+	<!-- BuildingService -->
+
+
+	<bean id="buildingService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="BuildingServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.building.service.BuildingService" />
+	</bean>
+
+
+
+
+
+	<!-- RoomService -->
+
+
+	<bean id="roomService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="RoomServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.building.service.RoomService" />
+	</bean>
+
+
+
+
+
+	<!-- OrgService -->
+
+
+	<bean id="orgService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="OrgServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.building.service.OrgService" />
+	</bean>
+
+
+
+
+
+	<!-- AreaService -->
+
+
+	<bean id="areaService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="AreaServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.building.service.AreaService" />
+	</bean>
+
+
+
+
+
+	<!-- ProjectOrgRelationService -->
+
+
+	<bean id="projectOrgRelationService" class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="ProjectOrgRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.building.service.ProjectOrgRelationService" />
+	</bean>
+
+	<!-- OwnerRoomRelationService  -->
+
+	
+	<bean id="ownerRoomRelationService"
+		class="com.gemantic.common.sca.service.SCAClientServiceFactory">
+		<property name="client" ref="scaClient" />
+		<property name="component" value="OwnerRoomRelationServiceComponent" />
+		<property name="className"
+			value="com.qding.framework.building.service.OwnerRoomRelationService" />
+	</bean>
+
+
+
+
+
+	<!-- performance -->
+
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.qding..service.*.*(..)) &amp;&amp; (!execution(* com.gemantic.common.sca.service.*.*(..)))" />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+
+		</aop:aspect>
+	</aop:config>
+</beans>
+

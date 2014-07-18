@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                     http://www.springframework.org/schema/context
+                     http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                     http://www.springframework.org/schema/aop
+                     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                     http://www.springframework.org/schema/tx
+                     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	<!--Spring 扫描除controller以外的Bean -->
+	<context:component-scan base-package="com.qding" />
+	<!-- Activates mapping of @Controller -->
+
+	<!-- hotFacet fitler -->
+	<!-- <bean id="pushClient" class="com.gemantic.commons.push.client.impl.HttpPushClientImpl"> 
+		<property name="serverUri" value="42.121.113.70"></property> <property name="path" 
+		value="/batchChannel"></property> <property name="port" value="8000"></property> 
+		</bean> -->
+
+
+	<context:property-placeholder location="classpath*:exception-messages-play.properties" />
+
+	<bean id="messageServiceConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="demo" value-ref="demoMessageService"></entry>
+				<!-- <entry key="help" value-ref="helpMessageService"></entry>
+				<entry key="order" value-ref="orderMessageService"></entry> -->
+
+
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+	<bean id="processServiceConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="subscribe" value-ref="subscribeProcessService">
+				</entry>
+				<entry key="unsubscribe" value-ref="unsubscribeProcessService">
+				</entry>
+
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="smsServiceConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="pattern" value="debug"></entry>
+				<entry key="expiration" value="10"></entry>
+				<entry key="regist" value="注册验证码 {code}【千丁互联】"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="demoMessageService"
+		class="com.qding.community.service.impl.WXMessageServiceDemoImpl">
+
+	</bean>
+	<bean id="helpMessageService"
+		class="com.qding.community.service.impl.WXHelpMessageServiceImpl">
+
+	</bean>
+	<bean id="orderMessageService"
+		class="com.qding.community.service.impl.WXOrderMessageServiceDemoImpl">
+
+	</bean>
+
+	<bean id="subscribeProcessService"
+		class="com.qding.community.service.impl.WXProcessServiceSubscribeImpl">
+	</bean>
+	<bean id="unsubscribeProcessService"
+		class="com.qding.community.service.impl.WXProcessServiceUnSubscribeImpl">
+	</bean>
+	
+	<bean id="cookieUtil" class="com.qding.common.util.http.cookie.CookieUtil"
+		scope="singleton">
+		<property name="home" value="www.qdingnet.com" />
+		<property name="domain" value=".qdingnet.com" />
+		<!-- cookie设置超时30分钟 -->
+		<property name="cookieMaxAge" value="-1" />
+	</bean>
+
+	<bean id="weixinService"
+		class="com.qding.commnunity.common.weixin.service.impl.WeiXinServiceImpl"
+		scope="singleton">
+
+	</bean>
+
+
+	<bean id="imgStorageUtil" class="com.qding.common.stroage.util.ImgStrorageUtilYPImpl">
+		<property name="bucketName" value="qd-test"></property>
+		<property name="userName" value="liyachong"></property>
+		<property name="userPwd" value="lyc@2014"></property>
+	</bean>
+
+	<bean id="filesUploadDir" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<!-- 默认为开发环境devEnvironment，待测试环境部署时，会将devEnvironment替换 -->
+				<entry key="uploadEnvironment" value="devEnvironment"></entry>
+				<entry key="imagesDir" value="Images"></entry>
+				<entry key="voicesDir" value="Voices"></entry>
+				<entry key="videosDir" value="Videos"></entry>
+				<entry key="othersDir" value="Others"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- SpringMVC上传文件时,需配置MultipartResolver处理器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 指定所上传文件的总大小不能超过1024KB......注意maxUploadSize属性的限制不是针对单个文件,而是所有文件的容量之和 -->
+		<property name="maxUploadSize" value="1024000" />
+	</bean>
+
+
+</beans>
