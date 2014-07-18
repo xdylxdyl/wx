@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+
+
+
+	<definition name="root" template="/WEB-INF/pages/room/tiles/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/pages/room/tiles/head.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/pages/room/tiles/foot.jsp" />
+
+	</definition>
+
+
+
+	<definition name="/potential/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="收货人" type="string" />
+	</definition>
+
+	<definition name="/address/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="收货人" type="string" />
+	</definition>
+
+	<definition name="/user/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="用户" type="string" />
+	</definition>
+
+
+
+	<definition name="/news/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="消息规则管理" type="string" />
+	</definition>
+
+	<definition name="/cart/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="购物车" type="string" />
+	</definition>
+
+	<definition name="/goods/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="货品列表" type="string" />
+	</definition>
+
+	<definition name="/gorder/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="订单" type="string" />
+	</definition>
+
+	<definition name="/paddress/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="收货地址" type="string" />
+	</definition>
+
+	<definition name="/pay/view/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="支付" type="string" />
+	</definition>
+
+	<definition name="/app-decorate-service/decorate/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/app-decorate-service/decorateImagesRelation/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/app-decorate-service/decoratePayment/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/app-decorate-service/decorateVender/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/app-decorate-service/decorateVenderUser/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/app-decorate-service/images/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+
+
+	<definition name="/framework-building-service/owner/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/framework-building-service/building/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/framework-building-service/room/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/framework-building-service/org/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/framework-building-service/area/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="/framework-building-service/projectOrgRelation/view/*"
+		extends="root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+		<put-attribute name="title" value="地址" type="string" />
+	</definition>
+
+	<definition name="angular-root"
+		template="/WEB-INF/pages/room/angular-tiles/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/pages/room/angular-tiles/head.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/pages/room/angular-tiles/foot.jsp" />
+
+	</definition>
+	
+	<definition name="/framework-building-service/index/view/*"
+		extends="angular-root">
+		<put-attribute name="body" value="/WEB-INF/pages/{0}.jsp" />
+	
+	</definition>
+
+
+
+
+
+
+</tiles-definitions>
