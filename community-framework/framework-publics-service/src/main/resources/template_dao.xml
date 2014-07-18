@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.Template"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getTemplateIdsByCodeAndPublicsID"
+				sqlitem="select id from template where   code = ? and publics_id = ?"
+				keyProperty="code,publicsID" valueProperty="id" keyColumn="code,publics_id" />
+					<list name="getTemplateIdsByTypeAndPublicsID"
+				sqlitem="select id from template where   type = ? and publics_id = ?"
+				keyProperty="type,publicsID" valueProperty="id" keyColumn="type,publics_id" />
+						
+			
+						
+			
+					<list name="getTemplateIdsAll" sqlitem="select id from template where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

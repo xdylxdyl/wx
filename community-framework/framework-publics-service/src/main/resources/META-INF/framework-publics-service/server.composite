@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0"
+    xmlns:scallop="http://scallop/xmlns/sca/1.0"
+    targetNamespace="http://FrameworkPublicsComponent" xmlns:sample="http://FrameworkPublicsComponent" name="FrameworkPublicsComponent">
+
+
+  <component name="FrameworkPublicsComponent">
+    <implementation.spring location="META-INF/framework-publics-service/applicationContext-server.xml" />
+  </component>
+  
+	  <service name="publicsService" promote="FrameworkPublicsComponent/publicsService">
+    <interface.java interface="com.qding.framework.publics.service.PublicsService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="PublicsRMIService"/>     
+  </service>
+	  <service name="ruleService" promote="FrameworkPublicsComponent/ruleService">
+    <interface.java interface="com.qding.framework.publics.service.RuleService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="RuleRMIService"/>     
+  </service>
+	  <service name="ruleKeywordsRelationService" promote="FrameworkPublicsComponent/ruleKeywordsRelationService">
+    <interface.java interface="com.qding.framework.publics.service.RuleKeywordsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="RuleKeywordsRelationRMIService"/>     
+  </service>
+	  <service name="messageService" promote="FrameworkPublicsComponent/messageService">
+    <interface.java interface="com.qding.framework.publics.service.MessageService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="MessageRMIService"/>     
+  </service>
+	  <service name="multiMessageRelationService" promote="FrameworkPublicsComponent/multiMessageRelationService">
+    <interface.java interface="com.qding.framework.publics.service.MultiMessageRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="MultiMessageRelationRMIService"/>     
+  </service>
+	  <service name="qrService" promote="FrameworkPublicsComponent/qrService">
+    <interface.java interface="com.qding.framework.publics.service.QrService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="QrRMIService"/>     
+  </service>
+	  <service name="menuService" promote="FrameworkPublicsComponent/menuService">
+    <interface.java interface="com.qding.framework.publics.service.MenuService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="MenuRMIService"/>     
+  </service>
+	  <service name="puserService" promote="FrameworkPublicsComponent/puserService">
+    <interface.java interface="com.qding.framework.publics.service.PuserService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="PuserRMIService"/>     
+  </service>
+	  <service name="puserPublicsRelationService" promote="FrameworkPublicsComponent/puserPublicsRelationService">
+    <interface.java interface="com.qding.framework.publics.service.PuserPublicsRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="PuserPublicsRelationRMIService"/>     
+  </service>
+	  <service name="roleService" promote="FrameworkPublicsComponent/roleService">
+    <interface.java interface="com.qding.framework.publics.service.RoleService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="RoleRMIService"/>     
+  </service>
+	  <service name="moduleService" promote="FrameworkPublicsComponent/moduleService">
+    <interface.java interface="com.qding.framework.publics.service.ModuleService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="ModuleRMIService"/>     
+  </service>
+	  <service name="projectService" promote="FrameworkPublicsComponent/projectService">
+    <interface.java interface="com.qding.framework.publics.service.ProjectService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="ProjectRMIService"/>     
+  </service>
+	  <service name="paddressService" promote="FrameworkPublicsComponent/paddressService">
+    <interface.java interface="com.qding.framework.publics.service.PaddressService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="PaddressRMIService"/>     
+  </service>
+	  <service name="addressProjectRelationService" promote="FrameworkPublicsComponent/addressProjectRelationService">
+    <interface.java interface="com.qding.framework.publics.service.AddressProjectRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="AddressProjectRelationRMIService"/>     
+  </service>
+	  <service name="publicsProjectRelationService" promote="FrameworkPublicsComponent/publicsProjectRelationService">
+    <interface.java interface="com.qding.framework.publics.service.PublicsProjectRelationService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="PublicsProjectRelationRMIService"/>     
+  </service>
+	  <service name="recordService" promote="FrameworkPublicsComponent/recordService">
+    <interface.java interface="com.qding.framework.publics.service.RecordService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="RecordRMIService"/>     
+  </service>
+	
+	  <service name="resourcesService" promote="FrameworkPublicsComponent/resourcesService">
+    <interface.java interface="com.qding.framework.publics.service.ResourcesService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="ResourcesRMIService"/>     
+  </service>
+  <service name="templateService" promote="FrameworkPublicsComponent/templateService">
+    <interface.java interface="com.qding.framework.publics.service.TemplateService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="TemplateRMIService"/>     
+  </service>
+  <service name="constantsService" promote="FrameworkPublicsComponent/constantsService">
+      <interface.java interface="com.qding.framework.publics.service.ConstantsService"/>
+      <scallop:binding.rmi host="localhost" port="9001" serviceName="ConstantsRMIService"/>
+  </service>
+
+  <service name="chatMessageService" promote="FrameworkPublicsComponent/chatMessageService">
+    <interface.java interface="com.qding.framework.publics.service.ChatMessageService"/> 
+    <scallop:binding.rmi host="localhost" port="9001" serviceName="ChatMessageRMIService"/>     
+  </service>
+  
+  
+  
+</composite>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<datasources>
+		<ds name="framework_publics"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://db.framework.publics:3306/community_framework?defaultBatchValue=1000"
+			username="root"
+			password="123456"
+			maxActive="50"
+			maxIdle="50"
+			maxWait="10"
+            check="true"
+		/>
+			
+		
+		 <ds name="idCenterDS"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://gemantic.weibo.db:3306/resources?defaultBatchValue=1000"
+			username="root"
+			password="123456"
+			maxActive=""
+			maxIdle=""
+			maxWait=""
+            check="true"
+		/>  
+	</datasources>
+	<groups>
+		<group name="framework_publics" master="framework_publics"  />
+        <group name="idCenterDS" master="idCenterDS" />
+	</groups>
+</root>
+
+

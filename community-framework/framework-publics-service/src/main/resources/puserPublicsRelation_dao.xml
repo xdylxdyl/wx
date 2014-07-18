@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.PuserPublicsRelation"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getPuserPublicsRelationIdsByPuserID"
+				sqlitem="select id from puser_publics_relation where puser_id = ?"
+				keyProperty="puserID" valueProperty="id" keyColumn="puser_id" />
+						
+			
+						
+			
+					<list name="getPuserPublicsRelationIdsAll" sqlitem="select id from puser_publics_relation where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

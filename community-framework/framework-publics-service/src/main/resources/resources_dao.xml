@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.Resources"
+			listenerClass="" strategyProperty="">
+
+
+			<list name="getResourcesIdsAll"
+				sqlitem="select id from resources where 1 = 1 order by id desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+
+			<dbStrategy name="mutiDS"
+				clasz="com.gemantic.dal.route.strategy.DefaultStrategy">
+				<pattern value="[0-9]$" group="idCenterDS" />
+			</dbStrategy>
+
+
+
+		</object>
+	</route>
+</dal>

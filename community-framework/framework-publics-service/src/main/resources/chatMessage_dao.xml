@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.ChatMessage"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getChatMessageIdsByOpenID"
+				sqlitem="select id from record where open_id = ?"
+				keyProperty="openID" valueProperty="id" keyColumn="open_id" />
+						
+			
+						
+			
+					<list name="getChatMessageIdsAll" sqlitem="select id from chat_message where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

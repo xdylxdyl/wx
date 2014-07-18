@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.MultiMessageRelation"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getMultiMessageRelationIdsByGroupID"
+				sqlitem="select id from multi_message_relation where group_id = ?"
+				keyProperty="groupID" valueProperty="id" keyColumn="group_id" />
+						
+			
+						
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

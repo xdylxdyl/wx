@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.Project"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+						
+			
+					<map name="getProjectIdByName"
+				sqlitem="select id from project where name = ?"
+				keyProperty="name" valueProperty="id" keyColumn="name" />
+						
+			
+					<list name="getProjectIdsAll" sqlitem="select id from project where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

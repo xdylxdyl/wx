@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.Rule"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+					<list name="getRuleIdsByPublicsID"
+				sqlitem="select id from rule where publics_id = ?"
+				keyProperty="publicsID" valueProperty="id" keyColumn="publics_id" />
+						
+			
+						
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

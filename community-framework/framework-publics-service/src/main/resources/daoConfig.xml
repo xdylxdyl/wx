@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<list>
+		
+				
+		
+		<config>
+			<path>publics_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>rule_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>ruleKeywordsRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>message_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>multiMessageRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>qr_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>menu_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>puser_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>puserPublicsRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>role_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>module_dao.xml</path>
+		</config>
+		<config>
+			<path>resources_dao.xml</path>
+		</config>
+
+        <config>
+            <path>constants_dao.xml</path>
+        </config>
+		
+		<config>
+			<path>puserLog_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>project_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>paddress_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>addressProjectRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>publicsProjectRelation_dao.xml</path>
+		</config>
+				
+		
+		<config>
+			<path>record_dao.xml</path>
+		</config>
+						
+		<config>
+			<path>chatMessage_dao.xml</path>
+		</config>	
+		
+		<config>
+			<path>template_dao.xml</path>
+		</config>	
+							
+		
+	</list>
+
+	<default>
+		<dbStrategy name=""
+			clasz="com.gemantic.dal.route.strategy.DefaultStrategy">
+			<pattern value="[0-9]$" group="g1" />
+		</dbStrategy>
+		<listenerClass className="" />
+		<idCenterDS ds="framework_publics" />
+	</default>
+</dal>                

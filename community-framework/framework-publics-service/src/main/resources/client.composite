@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:tuscany="http://tuscany.apache.org/xmlns/sca/1.0" xmlns:scallop="http://scallop/xmlns/sca/1.0"
+           targetNamespace="http://sns.sohu.com/home/composite" xmlns:sample="http://sns.sohu.com/home/composite" name="HomeComposite">
+	
+
+
+
+
+    	
+	
+	 <!-- FrameworkPublicsComponent -->
+
+    <component name = "ChatMessageServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.ChatMessageSCAClient"/>
+    	   
+    	<reference name = "chatMessageService">
+    		<scallop:binding.rmi registryName = "chatMessage-framework-publics-service-rmi" serviceName="ChatMessageRMIService"/>
+    	</reference>
+    </component >
+	 
+	     <component name = "PublicsServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.PublicsSCAClient"/>
+    	   
+    	<reference name = "publicsService">
+    		<scallop:binding.rmi registryName = "publics-framework-publics-service-rmi" serviceName="PublicsRMIService"/>
+    	</reference>
+    </component >
+        <component name = "RuleServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.RuleSCAClient"/>
+    	   
+    	<reference name = "ruleService">
+    		<scallop:binding.rmi registryName = "rule-framework-publics-service-rmi" serviceName="RuleRMIService"/>
+    	</reference>
+    </component >
+        <component name = "RuleKeywordsRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.RuleKeywordsRelationSCAClient"/>
+    	   
+    	<reference name = "ruleKeywordsRelationService">
+    		<scallop:binding.rmi registryName = "ruleKeywordsRelation-framework-publics-service-rmi" serviceName="RuleKeywordsRelationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "MessageServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.MessageSCAClient"/>
+    	   
+    	<reference name = "messageService">
+    		<scallop:binding.rmi registryName = "message-framework-publics-service-rmi" serviceName="MessageRMIService"/>
+    	</reference>
+    </component >
+        <component name = "MultiMessageRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.MultiMessageRelationSCAClient"/>
+    	   
+    	<reference name = "multiMessageRelationService">
+    		<scallop:binding.rmi registryName = "multiMessageRelation-framework-publics-service-rmi" serviceName="MultiMessageRelationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "QrServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.QrSCAClient"/>
+    	   
+    	<reference name = "qrService">
+    		<scallop:binding.rmi registryName = "qr-framework-publics-service-rmi" serviceName="QrRMIService"/>
+    	</reference>
+    </component >
+        <component name = "MenuServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.MenuSCAClient"/>
+    	   
+    	<reference name = "menuService">
+    		<scallop:binding.rmi registryName = "menu-framework-publics-service-rmi" serviceName="MenuRMIService"/>
+    	</reference>
+    </component >
+        <component name = "PuserServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.PuserSCAClient"/>
+    	   
+    	<reference name = "puserService">
+    		<scallop:binding.rmi registryName = "puser-framework-publics-service-rmi" serviceName="PuserRMIService"/>
+    	</reference>
+    </component >
+    	<component name = "PuserPublicsRelationServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.PuserPublicsRelationSCAClient"/>
+    	   
+    	<reference name = "puserPublicsRelationService">
+    		<scallop:binding.rmi registryName = "puserPublicsRelation-framework-publics-service-rmi" serviceName="PuserPublicsRelationRMIService"/>
+    	</reference>
+    </component >
+        <component name = "RoleServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.RoleSCAClient"/>
+    	   
+    	<reference name = "roleService">
+    		<scallop:binding.rmi registryName = "role-framework-publics-service-rmi" serviceName="RoleRMIService"/>
+    	</reference>
+    </component >
+        <component name = "ModuleServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.ModuleSCAClient"/>
+    	   
+    	<reference name = "moduleService">
+    		<scallop:binding.rmi registryName = "module-framework-publics-service-rmi" serviceName="ModuleRMIService"/>
+    	</reference>
+    </component >
+
+	   <component name = "TemplateServiceComponent">
+    	<implementation.java class = "com.qding.sca.framework.publics.client.TemplateSCAClient"/>
+    	   
+    	<reference name = "templateService">
+    		<scallop:binding.rmi registryName = "template-framework-publics-service-rmi" serviceName="TemplateRMIService"/>
+    	</reference>
+    </component >
+	
+</composite>
+

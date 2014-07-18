@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.Publics"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+						
+					<list name="getPublicsAll" sqlitem="select id from publics where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+				
+					
+						<list name="getPublicsIdsByAppId" sqlitem="select id from publics where app_id = ?"
+				keyProperty="appId" valueProperty="id" keyColumn="app_id" />
+				
+					
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

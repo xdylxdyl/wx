@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:sca="http://www.springframework.org/schema/sca"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/sca http://www.springframework.org/schema/sca/spring-sca.xsd">
+
+	<context:component-scan base-package="com.qding.framework.publics" />
+
+
+	<sca:service name="publicsService"
+		type="com.qding.framework.publics.service.PublicsService" target="publicsService" />
+
+
+	<sca:service name="ruleService"
+		type="com.qding.framework.publics.service.RuleService" target="ruleService" />
+
+
+	<sca:service name="ruleKeywordsRelationService"
+		type="com.qding.framework.publics.service.RuleKeywordsRelationService"
+		target="ruleKeywordsRelationService" />
+
+
+	<sca:service name="messageService"
+		type="com.qding.framework.publics.service.MessageService" target="messageService" />
+
+
+	<sca:service name="multiMessageRelationService"
+		type="com.qding.framework.publics.service.MultiMessageRelationService"
+		target="multiMessageRelationService" />
+
+
+	<sca:service name="qrService"
+		type="com.qding.framework.publics.service.QrService" target="qrService" />
+
+
+	<sca:service name="menuService"
+		type="com.qding.framework.publics.service.MenuService" target="menuService" />
+
+
+	<sca:service name="puserService"
+		type="com.qding.framework.publics.service.PuserService" target="puserService" />
+
+
+	<sca:service name="puserPublicsRelationService"
+		type="com.qding.framework.publics.service.PuserPublicsRelationService"
+		target="puserPublicsRelationService" />
+
+
+	<sca:service name="roleService"
+		type="com.qding.framework.publics.service.RoleService" target="roleService" />
+
+
+	<sca:service name="moduleService"
+		type="com.qding.framework.publics.service.ModuleService" target="moduleService" />
+
+	<sca:service name="projectService"
+		type="com.qding.framework.publics.service.ProjectService" target="projectService" />
+
+
+	<sca:service name="paddressService"
+		type="com.qding.framework.publics.service.PaddressService" target="paddressService" />
+
+
+	<sca:service name="addressProjectRelationService"
+		type="com.qding.framework.publics.service.AddressProjectRelationService"
+		target="addressProjectRelationService" />
+
+
+	<sca:service name="publicsProjectRelationService"
+		type="com.qding.framework.publics.service.PublicsProjectRelationService"
+		target="publicsProjectRelationService" />
+
+
+	<sca:service name="recordService"
+		type="com.qding.framework.publics.service.RecordService" target="recordService" />
+
+
+
+	<sca:service name="resourcesService" type="com.qding.framework.publics.service.ResourcesService" target="resourcesService" />
+
+    <sca:service name="constantsService" type="com.qding.framework.publics.service.ConstantsService" target="constantsService" />
+
+	<sca:service name="chatMessageService" type="com.qding.framework.publics.service.ChatMessageService" target="chatMessageService" />
+
+	<sca:service name="templateService"
+		type="com.qding.framework.publics.service.TemplateService" target="templateService" />
+
+
+
+	
+
+	<bean id="chatMessageService"
+		class="com.qding.framework.publics.service.impl.ChatMessageServiceImpl" parent="baseDaoService">
+	</bean>
+		
+	<bean id="publicsService"
+		class="com.qding.framework.publics.service.impl.PublicsServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="ruleService"
+		class="com.qding.framework.publics.service.impl.RuleServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="ruleKeywordsRelationService"
+		class="com.qding.framework.publics.service.impl.RuleKeywordsRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="messageService"
+		class="com.qding.framework.publics.service.impl.MessageServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="multiMessageRelationService"
+		class="com.qding.framework.publics.service.impl.MultiMessageRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="qrService" class="com.qding.framework.publics.service.impl.QrServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="menuService"
+		class="com.qding.framework.publics.service.impl.MenuServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="puserService"
+		class="com.qding.framework.publics.service.impl.PuserServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="puserPublicsRelationService"
+		class="com.qding.framework.publics.service.impl.PuserPublicsRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="roleService"
+		class="com.qding.framework.publics.service.impl.RoleServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="moduleService"
+		class="com.qding.framework.publics.service.impl.ModuleServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="resourcesService"
+		class="com.qding.framework.publics.service.impl.ResourcesServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+    <bean id="constantsService" class="com.qding.framework.publics.service.impl.ConstantsServiceImpl" parent="baseDaoService" />
+
+	<bean id="projectService"
+		class="com.qding.framework.publics.service.impl.ProjectServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="paddressService"
+		class="com.qding.framework.publics.service.impl.PaddressServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="addressProjectRelationService"
+		class="com.qding.framework.publics.service.impl.AddressProjectRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="publicsProjectRelationService"
+		class="com.qding.framework.publics.service.impl.PublicsProjectRelationServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+
+	<bean id="recordService"
+		class="com.qding.framework.publics.service.impl.RecordServiceImpl"
+		parent="baseDaoService">
+
+	</bean>
+	
+	<bean id="templateService"
+		class="com.qding.framework.publics.service.impl.TemplateServiceImpl" parent="baseDaoService">
+
+	</bean>
+	
+
+	<bean id="dao" class="com.gemantic.dal.dao.impl.CompositeDaoImpl" />
+
+	<bean id="baseDaoService"
+		class="com.qding.common.dao.base.service.impl.BaseDaoServiceImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+
+	<bean id="mongoDbConfig" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="ip" value="mongo.app.news"></entry>
+				<entry key="port" value="27017"></entry>
+				<entry key="db" value="chatMessage"></entry>
+				<entry key="collection" value="message"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	
+	
+
+
+	
+
+
+
+	<!-- performance -->
+	<aop:aspectj-autoproxy />
+	<bean id="aroundLoggingTime" class="com.gemantic.common.stat.aop.time.AroundTimeConsume" />
+	<aop:config>
+		<aop:aspect ref="aroundLoggingTime">
+			<aop:pointcut id="publicServiceMethod"
+				expression="execution(* com.qding..service.*.*(..)) " />
+			<aop:around method="around" pointcut-ref="publicServiceMethod" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>
+

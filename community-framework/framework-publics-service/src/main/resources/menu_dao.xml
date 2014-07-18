@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.Menu"
+			listenerClass="" strategyProperty="">
+			
+			
+			
+						
+			
+					<map name="getMenuMenuByPublicsID"
+				sqlitem="select menu from menu where publics_id = ?"
+				keyProperty="publicsID" valueProperty="menu" keyColumn="publics_id" />
+					<map name="getMenuIdByPublicsID"
+				sqlitem="select id from menu where publics_id = ?"
+				keyProperty="publicsID" valueProperty="id" keyColumn="publics_id" />
+						
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>

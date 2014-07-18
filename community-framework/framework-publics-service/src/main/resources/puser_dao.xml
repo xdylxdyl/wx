@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dal>
+	<route>
+		<object name="com.qding.framework.publics.model.Puser"
+			listenerClass="" strategyProperty="">
+			
+			
+				<list name="getPuserIdsAll" sqlitem="select id from puser where 1 = 1 order by create_at desc"
+				keyProperty="version" valueProperty="id" keyColumn="version" />
+			
+			
+					<list name="getPuserIdsByName"
+				sqlitem="select id from puser where name = ?"
+				keyProperty="name" valueProperty="id" keyColumn="name" />
+						
+				<list name="getPuserIdsByRoleID"
+				sqlitem="select id from puser where role_id = ?"
+				keyProperty="roleID" valueProperty="id" keyColumn="role_id" />
+				
+				<list name="getPuserIdsByRoleIDAndStatus"
+				sqlitem="select id from puser where role_id = ? and status = ?"
+				keyProperty="roleID,status" valueProperty="id" keyColumn="role_id,status" />
+						
+			<dbStrategy name="mutiDS"
+                clasz="com.gemantic.dal.route.strategy.DefaultStrategy">  <pattern value="[0-9]$" group="framework_publics" />
+            </dbStrategy>
+			
+		</object>
+	</route>
+</dal>
