@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>scallop</groupId>
+		<artifactId>scallop</artifactId>
+		<version>1.5</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>scallop-samples</artifactId>
+	<name>Scallop SCA Samples</name>
+	<packaging>pom</packaging>
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>rmi-sample</module>
+				<module>jms-sample</module>
+			</modules>
+		</profile>
+	</profiles>
+
+</project>

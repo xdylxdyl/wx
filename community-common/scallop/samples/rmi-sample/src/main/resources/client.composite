@@ -1,0 +1,23 @@
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0"
+	xmlns:sohu="http://www.sohu.com/xmlns/sca/1.0" 
+	xmlns:scallop="http://scallop/xmlns/sca/1.0" 
+	targetNamespace="http://www.sohu.com/hello"
+	xmlns:hello="http://www.sohu.com/hello" name="HelloComposite">
+
+    <component name="HelloworldClientComponent">
+        <implementation.java class="scallop.sca.sample.rmi.HelloworldClientImpl" />
+    	<reference name="helloworld">
+        	<interface.java interface="scallop.sca.sample.rmi.Helloworld"/>
+        	<scallop:binding.rmi registryName="hello" serviceName="HelloRMIService" />
+    	</reference>
+    </component>
+
+    <component name="HelloworldClientComponent2">
+        <implementation.java class="scallop.sca.sample.rmi.HelloworldClientImpl" />
+    	<reference name="helloworld">
+        	<interface.java interface="scallop.sca.sample.rmi.Helloworld"/>
+        	<scallop:binding.rmi registryName="hello" serviceName="HelloRMIService" />
+    	</reference>
+    </component>
+    
+</composite>

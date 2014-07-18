@@ -1,0 +1,30 @@
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0"
+	xmlns:sohu="http://www.sohu.com/xmlns/sca/1.0" 
+	xmlns:scallop="http://scallop/xmlns/sca/1.0" 
+	targetNamespace="http://www.sohu.com/hello"
+	xmlns:hello="http://www.sohu.com/hello" name="HelloComposite">
+
+    <component name="HelloworldComponent">
+        <implementation.java class="scallop.sca.sample.jms.HelloworldImpl" />
+    </component>
+    
+    <service name="HelloService" promote="HelloworldComponent">
+        <interface.java interface="scallop.sca.sample.jms.Helloworld"/>
+        <scallop:binding.jms initialContextFactory="org.apache.activemq.jndi.ActiveMQInitialContextFactory"
+		      registryName="hello-jms">
+		      <destination name="helloQueue" create="always" />
+		    </scallop:binding.jms>
+    </service>
+
+    <component name="HelloworldClientComponent">
+        <implementation.java class="scallop.sca.sample.jms.HelloworldClientImpl" />
+    	<reference name="helloworld">
+        	<interface.java interface="scallop.sca.sample.jms.Helloworld"/>
+        	<scallop:binding.jms initialContextFactory="org.apache.activemq.jndi.ActiveMQInitialContextFactory"
+		      registryName="hello-jms">
+		      <destination name="helloQueue" create="always" />
+		    </scallop:binding.jms>
+    	</reference>
+    </component>
+    
+</composite>

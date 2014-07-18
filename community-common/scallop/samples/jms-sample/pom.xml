@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>scallop-samples</artifactId>
+    <groupId>scallop</groupId>
+    <version>1.5</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>scallop</groupId>
+  <artifactId>scallop-jms-sample</artifactId>
+  <name>Scallop jms sample</name>
+  <dependencies>
+		<dependency>
+			<groupId>org.apache.tuscany.sca</groupId>
+			<artifactId>tuscany-implementation-java-runtime</artifactId>
+			<version>${tuscany.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tuscany.sca</groupId>
+			<artifactId>tuscany-host-embedded</artifactId>
+			<version>${tuscany.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>scallop</groupId>
+			<artifactId>scallop-binding-jms-runtime</artifactId>
+    		<version>1.5</version>
+    		<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.2.0</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+</project>
